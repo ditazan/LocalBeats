@@ -21,7 +21,7 @@ Dita Zanelli
 
 ## Animated Gifs/Pictures of App
 
-- Place various screens of your app here after they have been built
+<img src="./assets/wireframe.png">
 
 ## Tech Stack
 
