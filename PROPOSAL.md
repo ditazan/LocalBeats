@@ -47,7 +47,7 @@ The proposed application will leverage the genre “id” and “name” codes f
 
 The music genres (i.e., “names”) returned by the Ticketmaster Classification API shall be used to populate a drop-down field in the application’s UI – providing users with a method for selecting the type of music they like. The image below provides a wireframe illustration of the drop-down field.
 
->> [illustration of genre drop-down field](./assets/images/wirefrme-1.png)
+>> [illustration of genre drop-down field](./assets/images/wireframe-1.png)
 
 The genre(s) selected by the user shall be used as a parameter filter in the YouTube and Ticketmaster Events API calls.
 
@@ -55,7 +55,7 @@ The genre(s) selected by the user shall be used as a parameter filter in the You
 ### Ticketmaster Events API
 As previously noted, Ticketmaster manages ticketing for 230K+ live events worldwide. Details about these events, including venue location, date, artist, ticket availability are available through Ticketmaster's Events API. The user selected genre(s) described in the Ticketmaster Classification API and the user provided zip code shall be used as query parameters in the Events API call to provide a listing of live events within 100 miles. The proposed API call to be used is as follows:
 
->>> https://app.ticketmaster.com/discovery/v2/events.json??apikey=[api key]&postalCode=[user entered postal code]&segmentId=KZFzniwnSyZfZ7v7nJ&genreId=[genres selected by user]&radius=100
+>>> https://app.ticketmaster.com/discovery/v2/events.json?apikey=[api key]&postalCode=[user entered postal code]&segmentId=KZFzniwnSyZfZ7v7nJ&genreId=[genres selected by user]&radius=100
 
 Below is a wireframe image of the UI text field used to capture the user's zip code.
 
