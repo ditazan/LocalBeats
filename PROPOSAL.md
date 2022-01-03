@@ -1,7 +1,9 @@
 # Project Name - LocalBeats
 
+
 ## Project Summary
-Listen to the music you love - on your phone, at work, or go check it out live. Select the genre of music and share your location and LocalBeats will hit you wih great artists on YouTube and show you live events happening in your area.  
+Listen to the music you love - on your phone, at work, or go check it out live. Select the genre of music you like and share your location - LocalBeats will hit you with videos, tracks, and live events in your area.    
+
 
 ## Developers
 1. Dita Zanelli
@@ -9,8 +11,10 @@ Listen to the music you love - on your phone, at work, or go check it out live. 
 3. Buyankhishig Jamsran
 4. Brad Kelley
 
+
 ## Installation Instructions
-1. Log into GitHub portal - https://github.com/ditazan/Music
+1. Log into GitHub repository - https://github.com/ditazan/Music
+>> [repository image](./assets/images/repository.png)
 
 2. Click on CODE button and copy ssh link - git@github.com:ditazan/Music.git 
 >> The following image illustrates the process of copying the SSH link.
@@ -21,20 +25,26 @@ Listen to the music you love - on your phone, at work, or go check it out live. 
 >> - git clone [paste copied link] (clone repository)
 
 
-
 ## Animated Gifs/Pictures of App
-- Place various screens of your app here after they have been built
+[wireframe image of app features](./assets/images/wireframe.png)
+
 
 ## Tech Stack
-- What languages is it written with: HTML 5, javascript, css
+What languages is it written with: 
+>> 1. HTML 5
+>> 2. JavaScript
+>> 3. CSS
 
-- What libraries are used: 
-    https://p5js.org/ - Creative Coding Language
+What libraries are used: 
+>> 1. P5 Creative Coding Language - https://p5js.org/
+>> 2. Jquery - https://code.jquery.com/jquery-3.4.1.min.js
 
-- Other: 
+Other: 
 
 
 ## APIs
+LocalBeats incorporates the following APIs from Ticketmaster and YouTube.
+
 
 ### Ticketmaster Classification API
 Ticketmaster Entertainment, LLC. (www.Ticketmaster.com) is the world’s largest ticket marketer, offering access to 230K+ live events sourced from various platform, including Ticketmaster, Universe, FrontGate Tickets and Ticketmaster Resale (TMR). Ticketmaster utilizes a proprietary, hierarchical coding schema (segment, genre, sub-genre, type, sub-type) to classify events. This code set is published through Ticketmaster's "Classifications" endpoint, located at: 
@@ -53,7 +63,7 @@ The genre(s) selected by the user shall be used as a parameter filter in the You
 
 
 ### Ticketmaster Events API
-As previously noted, Ticketmaster manages ticketing for 230K+ live events worldwide. Details about these events, including venue location, date, artist, ticket availability are available through Ticketmaster's Events API. The user selected genre(s) described in the Ticketmaster Classification API and the user provided zip code shall be used as query parameters in the Events API call to provide a listing of live events within 100 miles. The proposed API call to be used is as follows:
+As previously noted, Ticketmaster manages ticketing for 230K+ live events worldwide. Details about these events, including venue location, date, artist, ticket availability are available through Ticketmaster's Events API. The user-selected genre(s) described in the Ticketmaster Classification API and the user provided zip code shall be used as query parameters in the Events API call to provide a listing of live events within 100 miles. The proposed API call to be used is as follows:
 
 >>> https://app.ticketmaster.com/discovery/v2/events.json?apikey=[api key]&postalCode=[user entered postal code]&segmentId=KZFzniwnSyZfZ7v7nJ&genreId=[genres selected by user]&radius=100
 
@@ -61,7 +71,11 @@ Below is a wireframe image of the UI text field used to capture the user's zip c
 
 >> [illustration of zip code input field](./assets/images/wireframe-2.png)
 
-### YouTube API
+
+### YouTube Search API
+YouTube is recognized globally as a leading platform for video content from both amateurs and professionals alike, including musicians. YouTube’s Search API call can provide a listing of videos, channels, and playlists that match the search parameters specified in an API request. Utilizing the user-selected genre(s) described in the Ticketmaster Classification API as search keywords and content filters, YouTube Search API will be used to provide video content for the proposed application. The proposed YouTube endpoint to be used is as follows:
+
+>>> https://www.googleapis.com/youtube/v3/search
 
 
 ## MVP (Minimum Viable Product)
@@ -71,7 +85,7 @@ The MVP for the proposed application is as follows:
 3. Music videos play, pause, and stop using controls;
 5. User is presented with live music events within 100-miles of the user provided zip code and matching the user-selected genre(s);
 6. Event details including venue location, date, artist, ticket availability;
-6. User's genre selection and zip code are saved in localStorage
+6. User's genre selection and zip code are saved in localStorage; and
 7. Saved user genre and zip code information are retrieved on application open and music videos and events are retrieved. 
 
 
@@ -79,6 +93,6 @@ The MVP for the proposed application is as follows:
 Project stretch goals include incorporating the following non-prioritized features:
 1. A Google map to visualize the location of venues;
 2. Search music & events by artist name;
-3. Allow user to set the radius used to search for events (by deault = 100 miles);
-4. Images of the venues;
+3. Allow user to set the radius used to search for events (default = 100 miles);
+4. Images of the venues; and
 5. A weather forecast for the user's local area.
