@@ -26,7 +26,7 @@ Listen to the music you love - on your phone, at work, or go check it out live. 
 
 
 ## Animated Gifs/Pictures of App
-[wireframe image of app features](./assets/images/wireframe.png)
+![wireframe image of app features](./assets/images/wireframe.png)
 
 
 ## Tech Stack
