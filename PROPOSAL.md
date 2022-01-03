@@ -61,16 +61,18 @@ Below is a wireframe image of the UI text field used to capture the user's zip c
 
 >> [illustration of zip code input field](./assets/images/wireframe-2.png)
 
-### 
+### YouTube API
 
 
 ## MVP (Minimum Viable Product)
 The MVP for the proposed application is as follows:
 1. Present the user with a modal to select one or more music genre(s) and enter their zip code;
 2. User is presented with music videos that match the user-selected genre(s);
-3. User is presented with live music events within 100-miles of the user provided zip code and matching the user-selected genre(s);
-2. User's genre selection and zip code are saved in localStorage. It should be editable and persistant;
-3. 
+3. Music videos play, pause, and stop using controls;
+5. User is presented with live music events within 100-miles of the user provided zip code and matching the user-selected genre(s);
+6. Event details including venue location, date, artist, ticket availability;
+6. User's genre selection and zip code are saved in localStorage
+7. Saved user genre and zip code information are retrieved on application open and music videos and events are retrieved. 
 
 
 ## Stretch Goals
@@ -78,5 +80,5 @@ Project stretch goals include incorporating the following non-prioritized featur
 1. A Google map to visualize the location of venues;
 2. Search music & events by artist name;
 3. Allow user to set the radius used to search for events (by deault = 100 miles);
-3. Images of the venues;
-4. A weather forecast for the user's local area.
+4. Images of the venues;
+5. A weather forecast for the user's local area.
