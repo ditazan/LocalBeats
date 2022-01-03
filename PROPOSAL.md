@@ -57,7 +57,7 @@ The proposed application will leverage the genre “id” and “name” codes f
 
 The music genres (i.e., “names”) returned by the Ticketmaster Classification API shall be used to populate a drop-down field in the application’s UI – providing users with a method for selecting the type of music they like. The image below provides a wireframe illustration of the drop-down field.
 
->> [illustration of genre drop-down field](./assets/images/wireframe-1.png)
+>> ![illustration of genre drop-down field](./assets/images/wireframe-1.png)
 
 The genre(s) selected by the user shall be used as a parameter filter in the YouTube and Ticketmaster Events API calls.
 
@@ -69,7 +69,7 @@ As previously noted, Ticketmaster manages ticketing for 230K+ live events worldw
 
 Below is a wireframe image of the UI text field used to capture the user's zip code.
 
->> [illustration of zip code input field](./assets/images/wireframe-2.png)
+>> ![illustration of zip code input field](./assets/images/wireframe-2.png)
 
 
 ### YouTube Search API
