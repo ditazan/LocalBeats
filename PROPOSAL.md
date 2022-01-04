@@ -7,7 +7,7 @@ Listen to the music you love - on your phone, at work, or go check it out live. 
 
 ## Developers
 1. Dita Zanelli
-2. Jay Jackson
+2. Jamie Jackson
 3. Buyankhishig Jamsran
 4. Brad Kelley
 
