@@ -15,3 +15,24 @@ $.ajax({
    }
 });
 
+
+const genreId = "KnvZfZ7vAeA"; //rock genre
+const radius = "200"; // radius does not appear to be functioning
+const postalCode = "28202"; // postal code appears to be specific to the venue
+const size = "200"; //not working
+const status = "onsale"
+// ticketmaster events api call
+$.ajax({
+  type:"GET",
+  url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size="+size+"&genreId="+genreId,
+  async:true,
+  dataType: "json",
+  success: function(eventsData) {
+     const events=eventsData._embedded.events;
+              console.log(events);
+
+           },
+  error: function(xhr, status, err) {
+
+           }
+});
