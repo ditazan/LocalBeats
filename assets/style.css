@@ -1,46 +1,73 @@
-*{
+* {
     margin:0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  body{
+  body {
     font-family: Arial, Helvetica, sans-serif;
     background: black;
+    margin: 100px 400px;
+    border: 2px solid white;
   }
 
-  header{
-      justify-content: center;
-      align-items: center;
-      font-size: 50px;
+  header {
+      font-size: 20px;
       color: white;
       font-family: Arial, Helvetica, sans-serif;
       font-weight: bold;
+      border-bottom: 2px solid white;
+      padding: 5px;
   }
   
-  .input{
+  .inputMusic {
     text-align: center;
-    margin: 100px auto;
+    margin: 0px 100px 20px;
+    border: 1px solid white;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    padding: 20px 10px;
   }
-  
-  input[type="submit"]{
-    padding: 15px 30px;
-    background: red;
-    border: none;
-    border-radius: 1px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight:bold;
+
+  .inputZip {
+    text-align: center;
+    margin: 0px 100px 20px;
+    border: 1px solid white;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    padding: 20px 10px;
+  }
+
+  p {
+    color: white;
     font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid white;
+    margin: 50px 100px 0px;
+    padding: 2px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
   }
   
-  .input input[type="text"]{
-    width: 600px;
+  .input_text {
+    width: 200px;
     height: 55px;
     padding: 5px 10px;
     background: white;
     border: none;
-    border-radius: 1px;
+    border-radius: 50px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight:bold;
     font-size: 20px;
+  }
+  
+  .submit {
+    padding: 15px 30px;
+    background: white;
+    border: none;
+    border-radius: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    font-size: 20px;
+    margin: 10px 160px 30px;
   }
