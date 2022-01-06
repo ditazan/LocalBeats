@@ -9,6 +9,7 @@
     background: black;
     margin: 100px 400px;
     border: 2px solid white;
+    border-radius: 3px;
   }
 
   header {
@@ -29,7 +30,7 @@
     padding: 20px 10px;
   }
 
-  .inputZip {
+  .inputCity {
     text-align: center;
     margin: 0px 100px 20px;
     border: 1px solid white;
