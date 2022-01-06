@@ -7,9 +7,12 @@ $.ajax({
    dataType: "json",
    success: function (data) {
       const genres = data._embedded.genres;
-      console.log(genres);
-         
-      
+      // console.log(genres);
+         for (let i = 0; i < genres.length; i++) {
+                   const genreIds = genres[i].id;
+                    const genreNames = genres[i].name;
+                    console.log(genreIds,genreNames);
+               }
    },
    error: function (xhr, status, err) {
    }
@@ -19,7 +22,7 @@ $.ajax({
 const genreId = "KnvZfZ7vAeA"; //rock genre
 const radius = "200"; // radius does not appear to be functioning
 const postalCode = "28202"; // postal code appears to be specific to the venue
-const size = "200"; //not working
+const size = "100"; //not working
 const status = "onsale"
 // ticketmaster events api call
 $.ajax({
