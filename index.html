@@ -1,32 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Local Beats</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>LOCAL BEATS</h1>
-    </header>
-    <section class="input">
-      <p>Stuff you like:</p>
-      <div class="inputMusic"> 
-        <input type="text" placeholder="Enter music genre" class="input_text" id="genre-submission">
-      </div>
-      <p>Where you are:</p>
-      <div class="inputZip"> 
-        <input type="text" placeholder="Enter zipcode" class="input_text" id="zip">
-      </div>
-      <div> <input type="submit" value="Submit" class="submit"></div>
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Local Beats</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="localBeat-window border">
+        <header>
+          <h1>localBeats</h1>
+        </header>
 
+        <section class="action-window">
+          <div class="input-window border">
+            <p class="tab-title">Stuff you like:</p>
 
-  <div class="container"> 
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./assets/js/script.js"></script>
-</body>
+            <input
+              type="text"
+              placeholder="Enter music genre"
+              class="input_text"
+              id="genre-submission"
+            />
+            <ul class="genre-menu">
+              <li>
+                genre
+              </li>
+              <li>
+                genre
+              </li>
+            </ul>
+          </div>
+
+          <div class="input-window border">
+            <p class="tab-title">Where you are:</p>
+
+            <input
+              type="text"
+              placeholder="Enter city"
+              class="input_text"
+              id="city"
+            />
+          </div>
+
+          <input type="submit" value="Submit" class="submit input-window" />
+        </section>
+      </div>
+      <div class="visual-window border" id="visual"><p id="go-back">Refine Search</p></div>
+    </div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/noise.js"></script>
+  </body>
 </html>
