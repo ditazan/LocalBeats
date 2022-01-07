@@ -31,7 +31,6 @@ $('.submit').on('click', function (event) {
       alert("ERROR: A city name is required. Please enter a city name.")
    }
    else
-      //  console.log(cityName,genreId);
 
       $.ajax({
          type: "GET",
@@ -47,9 +46,9 @@ $('.submit').on('click', function (event) {
                const eventTimeZone = events[i].dates.timezone;
                const eventStatus = events[i].dates.status.code;
                const eventName = events[i].name;
-               const eventVenue = events[i]._embedded.venues;
+               const venueArray = events[i]._embedded.venues;
                console.log(eventDate, eventTime, eventTimeZone, eventStatus, eventName);
-               console.log(eventVenue);
+               venueParse(venueArray);
             }
 
          },
@@ -59,3 +58,18 @@ $('.submit').on('click', function (event) {
       })
 
 });
+
+function venueParse(venueArray) {
+   for (let index = 0; index < venueArray.length; index++) {
+      const venueId = venueArray[index].id;
+      const venueName = venueArray[index].name;
+      const venueAddress = venueArray[index].address.line1;
+      const venueCity = venueArray[index].city.name;
+      const venueState = venueArray[index].state.stateCode;
+      const venueZip = venueArray[index].postalCode;
+      const venueLat = venueArray[index].location.latitude;
+      const venueLong = venueArray[index].location.longitude;
+      const venueTimeZone = venueArray[index].timezone
+      console.log(venueId, venueName, venueAddress, venueCity, venueState, venueZip, venueLat, venueLong, venueTimeZone);
+   }
+};
