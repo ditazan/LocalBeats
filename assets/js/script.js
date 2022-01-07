@@ -1,4 +1,3 @@
-
 //Ticketmaster API call to pull genres
 $.ajax({
    type: "GET",
@@ -19,7 +18,7 @@ $.ajax({
 
 function appendGenres(genreIds, genreNames) {
    const genreInitial = $('<option id="genreNone" value=""></option>').text("");
-   const genreOptions = $('<option id="' + genreIds + '" value="' + genreIds + '"></option>').text(genreNames);
+   const genreOptions = $('<option id="' + genreNames + '" value="' + genreIds + '"></option>').text(genreNames);
    $("#genreId").append(genreInitial, genreOptions);
 }
 
@@ -31,7 +30,7 @@ $('.submit').on('click', function (event) {
       alert("ERROR: A city name is required. Please enter a city name.")
    }
    else
-
+      getYouTube();
       $.ajax({
          type: "GET",
          url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=" + genreId + "&city=" + cityName + "&radius=100&unit=miles",
@@ -57,6 +56,7 @@ $('.submit').on('click', function (event) {
          }
       })
 
+
 });
 
 function venueParse(venueArray) {
@@ -73,3 +73,17 @@ function venueParse(venueArray) {
       console.log(venueId, venueName, venueAddress, venueCity, venueState, venueZip, venueLat, venueLong, venueTimeZone);
    }
 };
+
+const getYouTube = function(){
+fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blues&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs")
+.then(async function (response) {
+   if (response.ok) {
+       const dataYouTube = await response.json();
+       console.log(dataYouTube);} 
+   else {
+      alert(error + " something went wrong");
+     }
+   })
+}
+
+
