@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,28 @@
   <title>Local Beats</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    <header>
-        <h1>LOCAL BEATS</h1>
-    </header>
-    <section class="input">
-      <p>Stuff you like:</p>
-      <div class="inputMusic"> 
-        <input type="text" placeholder="Enter music genre" class="input_text" id="genre-submission">
-      </div>
-      <p>Where you are:</p>
-      <div class="inputZip"> 
-        <input type="text" placeholder="Enter zipcode" class="input_text" id="zip">
-      </div>
-      <div> <input type="submit" value="Submit" class="submit"></div>
-    </section>
+  <header>
+    <h1>LOCAL BEATS</h1>
+  </header>
+  <section class="input">
+    <p>Stuff you like:</p>
+    <div class="inputMusic">
+      <select type="text" placeholder="Enter music genre" class="input_text" id="genreId"></select>
+    </div>
+    <p>Where you are:</p>
+    <div class="inputZip">
+      <input type="text" placeholder="Enter city name" class="input_text" id="cityName">
+    </div>
+    <div> <input type="submit" value="Submit" class="submit"></div>
+  </section>
 
 
-  <div class="container"> 
+  <div class="container">
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
