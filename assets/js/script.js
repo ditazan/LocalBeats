@@ -94,4 +94,20 @@ fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q
    })
 }
 
-
+var resultPage = function () {
+   $(".input-window").remove();
+   $(".submit").remove();
+   $(".action-window").append(
+     "<div class='input-window border'> <p class='tab-title'>You should checkout ..</p> poopie</div>"
+   );
+   $("#visual").show();
+   $("#go-back").on("click", function () {
+     location.reload();
+     console.log("slick");
+   });
+ };
+ 
+ $(".submit").on("click", function () {
+   resultPage();
+ });
+   
