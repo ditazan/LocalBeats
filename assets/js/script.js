@@ -89,12 +89,29 @@ function venueParse(venueArray) {
 };
 
 const getYouTube = function(genreName) {
-
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${encodeURIComponent(genreName)}&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
       .then(async function (response) {
          if (response.ok) {
             const dataYouTube = await response.json();
             console.log(dataYouTube);
+            const youtubeCallEtag = dataYouTube.etag;
+            const youtubeNextToken = dataYouTube.nextPageToken;
+            console.log(youtubeCallEtag,youtubeNextToken);
+            for (let yt = 0; yt < dataYouTube.items.length; yt++) {
+               const videoEtag = dataYouTube.items[yt].etag;
+               const videoId = dataYouTube.items[yt].id.videoId;
+               const videoTitle = dataYouTube.items[yt].title;
+               const videoChannelId = dataYouTube.items[yt].snippet.channelId;
+               const videoChannelTitle = dataYouTube.items[yt].snippet.channelTitle;
+               const videoDesc = dataYouTube.items[yt].snippet.description;
+               const videoDateTime = dataYouTube.items[yt].snippet.publishTime;
+               const videoThumbSm = dataYouTube.items[yt].snippet.thumbnails.default.url;
+               const videoThumbMd = dataYouTube.items[yt].snippet.thumbnails.medium.url;
+               const videoThumbLg = dataYouTube.items[yt].snippet.thumbnails.high.url;
+               console.log(videoEtag,videoId,videoTitle,videoChannelId,videoChannelTitle,videoDesc,videoDateTime);
+               console.log(videoThumbSm,videoThumbMd,videoThumbLg);
+            }
+            
          }
          else {
             alert(error + " something went wrong");
