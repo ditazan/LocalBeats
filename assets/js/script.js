@@ -10,7 +10,7 @@ $.ajax({
          const genreIds = genres[i].id;
          const genreNames = genres[i].name;
          console.log(genreIds, genreNames);
-        {
+         {
             // for (let sub = 0; sub < genres[i]._embedded.subgenres.length; sub++) {
             //    const subGenreId = genres[i]._embedded.subgenres[sub].id;
             //    const subGenreName = genres[i]._embedded.subgenres[sub].name;
@@ -25,44 +25,50 @@ $.ajax({
 });
 
 function appendGenres(genreIds, genreNames) {
-   const genreInitial = $('<option id="genreNone" value=""></option>').text("");
-   const genreOptions = $('<option id="' + genreNames + '" value="' + genreIds + '"></option>').text(genreNames);
-   $("#genreId").append(genreInitial, genreOptions);
+   const genreOptions = $(`<option value="${genreIds},${genreNames}"></option>`).text(genreNames);
+   $("#genreId").append(genreOptions);
 }
 
 $('.submit').on('click', function (event) {
    event.preventDefault();
-   const cityName = $("#cityName").val();
-   const genreId = $("#genreId").val();
+   const genreData = $("#genreId").val().split(",");
+   const genreId = genreData[0].trim();
+   const genreName = genreData[1].trim();
+   const cityName = $("#cityName").val().trim();
+   console.log(genreName,genreId);
    if (cityName == null || cityName == "") {
       alert("ERROR: A city name is required. Please enter a city name.")
+      return
+   } else if (genreId == null || genreId == "") {
+      alert("ERROR: A music genre is required. Please select a music genre.")
+      return
    }
    else
       getYouTube();
-      $.ajax({
-         type: "GET",
-         url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=" + genreId + "&city=" + cityName + "&radius=100&unit=miles",
-         async: true,
-         dataType: "json",
-         success: function (eventsData) {
-            const events = eventsData._embedded.events;
-            console.log(events);
-            for (let i = 0; i < events.length; i++) {
-               const eventDate = events[i].dates.start.localDate;
-               const eventTime = events[i].dates.start.localTime;
-               const eventTimeZone = events[i].dates.timezone;
-               const eventStatus = events[i].dates.status.code;
-               const eventName = events[i].name;
-               const venueArray = events[i]._embedded.venues;
-               console.log(eventDate, eventTime, eventTimeZone, eventStatus, eventName);
-               venueParse(venueArray);
-            }
-
-         },
-         error: function (xhr, status, err) {
-
+   $.ajax({
+      type: "GET",
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=" + genreId + "&city=" + cityName + "&radius=100&unit=miles",
+      async: true,
+      dataType: "json",
+      success: function (eventsData) {
+         const events = eventsData._embedded.events;
+         console.log(events);
+         for (let i = 0; i < events.length; i++) {
+            const eventDate = events[i].dates.start.localDate;
+            const eventTime = events[i].dates.start.localTime;
+            const eventTimeZone = events[i].dates.timezone;
+            const eventStatus = events[i].dates.status.code;
+            const eventName = events[i].name;
+            const venueArray = events[i]._embedded.venues;
+            console.log(eventDate, eventTime, eventTimeZone, eventStatus, eventName);
+            venueParse(venueArray);
          }
-      })
+
+      },
+      error: function (xhr, status, err) {
+
+      }
+   })
 
 
 });
@@ -82,32 +88,33 @@ function venueParse(venueArray) {
    }
 };
 
-const getYouTube = function(){
-fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blues&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs")
-.then(async function (response) {
-   if (response.ok) {
-       const dataYouTube = await response.json();
-       console.log(dataYouTube);} 
-   else {
-      alert(error + " something went wrong");
-     }
-   })
+const getYouTube = function () {
+   fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blues&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs")
+      .then(async function (response) {
+         if (response.ok) {
+            const dataYouTube = await response.json();
+            console.log(dataYouTube);
+         }
+         else {
+            alert(error + " something went wrong");
+         }
+      })
 }
 
 var resultPage = function () {
    $(".input-window").remove();
    $(".submit").remove();
    $(".action-window").append(
-     "<div class='input-window border'> <p class='tab-title'>You should checkout ..</p> poopie</div>"
+      "<div class='input-window border'> <p class='tab-title'>You should checkout ..</p> poopie</div>"
    );
    $("#visual").show();
    $("#go-back").on("click", function () {
-     location.reload();
-     console.log("slick");
+      location.reload();
+      console.log("slick");
    });
- };
- 
- $(".submit").on("click", function () {
+};
+
+$(".submit").on("click", function () {
    resultPage();
- });
-   
+});
+
