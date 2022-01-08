@@ -9,6 +9,14 @@ $.ajax({
       for (let i = 0; i < genres.length; i++) {
          const genreIds = genres[i].id;
          const genreNames = genres[i].name;
+         console.log(genreIds, genreNames);
+        {
+            // for (let sub = 0; sub < genres[i]._embedded.subgenres.length; sub++) {
+            //    const subGenreId = genres[i]._embedded.subgenres[sub].id;
+            //    const subGenreName = genres[i]._embedded.subgenres[sub].name;
+            //    console.log(subGenreId,subGenreName);
+            // }
+         }
          appendGenres(genreIds, genreNames);
       }
    },
