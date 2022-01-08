@@ -44,7 +44,7 @@ $('.submit').on('click', function (event) {
       return
    }
    else
-      getYouTube();
+      getYouTube(genreName);
    $.ajax({
       type: "GET",
       url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=" + genreId + "&city=" + cityName + "&radius=100&unit=miles",
@@ -88,8 +88,9 @@ function venueParse(venueArray) {
    }
 };
 
-const getYouTube = function () {
-   fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blues&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs")
+const getYouTube = function(genreName) {
+
+fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${encodeURIComponent(genreName)}&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
       .then(async function (response) {
          if (response.ok) {
             const dataYouTube = await response.json();
