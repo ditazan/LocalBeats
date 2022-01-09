@@ -35,7 +35,7 @@ $('.submit').on('click', function (event) {
    const genreId = genreData[0].trim();
    const genreName = genreData[1].trim();
    const cityName = $("#cityName").val().trim();
-   console.log(genreName,genreId);
+   console.log(genreName, genreId);
    if (cityName == null || cityName == "") {
       alert("ERROR: A city name is required. Please enter a city name.")
       return
@@ -88,15 +88,15 @@ function venueParse(venueArray) {
    }
 };
 
-const getYouTube = function(genreName) {
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+const getYouTube = function (genreName) {
+   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
       .then(async function (response) {
          if (response.ok) {
             const dataYouTube = await response.json();
             console.log(dataYouTube);
             const youtubeCallEtag = dataYouTube.etag;
             const youtubeNextToken = dataYouTube.nextPageToken;
-            console.log(youtubeCallEtag,youtubeNextToken);
+            console.log(youtubeCallEtag, youtubeNextToken);
             for (let yt = 0; yt < dataYouTube.items.length; yt++) {
                const videoEtag = dataYouTube.items[yt].etag;
                const videoId = dataYouTube.items[yt].id.videoId;
@@ -108,15 +108,20 @@ fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q
                const videoThumbSm = dataYouTube.items[yt].snippet.thumbnails.default.url;
                const videoThumbMd = dataYouTube.items[yt].snippet.thumbnails.medium.url;
                const videoThumbLg = dataYouTube.items[yt].snippet.thumbnails.high.url;
-               console.log(videoEtag,videoId,videoTitle,videoChannelId,videoChannelTitle,videoDesc,videoDateTime);
-               console.log(videoThumbSm,videoThumbMd,videoThumbLg);
-            }
-            
-         }
-         else {
+               console.log(videoEtag, videoId, videoTitle, videoChannelId, videoChannelTitle, videoDesc, videoDateTime);
+               console.log(videoThumbSm, videoThumbMd, videoThumbLg);
+               crtVideoPlayer(videoId);
+              
+            };
+         } else {
             alert(error + " something went wrong");
          }
       })
+};
+
+function crtVideoPlayer(videoId) {
+   const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" async="" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
+   $(".input-window").append(videoPlayer);
 }
 
 var resultPage = function () {
