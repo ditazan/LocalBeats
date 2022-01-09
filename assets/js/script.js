@@ -111,7 +111,7 @@ const getYouTube = function (genreName) {
                console.log(videoEtag, videoId, videoTitle, videoChannelId, videoChannelTitle, videoDesc, videoDateTime);
                console.log(videoThumbSm, videoThumbMd, videoThumbLg);
                crtVideoPlayer(videoId);
-              
+
             };
          } else {
             alert(error + " something went wrong");
@@ -120,7 +120,7 @@ const getYouTube = function (genreName) {
 };
 
 function crtVideoPlayer(videoId) {
-   const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" async="" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
+   const videoPlayer = $(`<iframe id="player" class="youtube" display = "block" type="text/html" async="" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
    $(".input-window").append(videoPlayer);
 }
 
