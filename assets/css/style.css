@@ -100,10 +100,14 @@
     font-weight: bold;
     font-size: 20px;
     margin: 10px;
+    color: black;
   }
   
   .submit {
+    width: 50%;
+    margin: 10px auto;
     padding: 15px 30px;
+    color: black;
     background: white;
     border-radius: 50px;
     font-weight: bold;
