@@ -26,7 +26,7 @@
     flex-flow: column;
     margin: 5% auto;
   }
-  
+
   .localBeat-window {
     background-color: black;
   }
@@ -40,7 +40,7 @@
   }
   
   .input-window {
-    margin: 30px 20px;
+    margin: 15px 0 15px 0;
   }
   
   .visual-window {
@@ -68,6 +68,10 @@
     border-top: 2px solid white;
     border-right: 2px solid white;
     border-top-right-radius: 40px;
+  }
+
+  .dropdown {
+    width: 100%;
   }
   
   .genre-menu {
