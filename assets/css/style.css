@@ -17,6 +17,7 @@ body {
 .border {
   border: 2px solid white;
   border-radius: 10px;
+  box-shadow: 5px 5px 10px rgb(163,177,198,0.6), -5px -5px 10px rgba(255,255,255, 0.5);
 }
 
 .container {
@@ -106,13 +107,18 @@ li {
   font-size: 20px;
 }
 
- .input-li {
+ .input-button {
   display: flex;
   justify-content: space-between;
   align-content: space-between;
+  text-align: justify;
   padding: 2px;
+  margin: 3px;
+  background: black;
+  color: white;
  }
 
- .input-li img {
+ .vidIcon {
   border-radius: 10%;
+  padding: 3px;
  }

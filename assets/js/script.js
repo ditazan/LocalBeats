@@ -47,7 +47,7 @@ $('.submit').on('click', function (event) {
       getYouTube(genreName);
    $.ajax({
       type: "GET",
-      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(cityName)}&radius=100&unit=miles`,
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(cityName)}`,
       async: true,
       dataType: "json",
       success: function (eventsData) {
@@ -126,7 +126,8 @@ const getYouTube = function (genreName) {
 // }
 
 function option1(videoId, videoChannelTitle, videoDesc,videoThumbSm) {
-   $(".input-ul").append(`<li class='input-li' id = '${videoId}'><img src='${videoThumbSm}' class='${videoId}' alt='${videoChannelTitle}'><span>${videoChannelTitle}<br>${videoDesc}</span></ul>`);
+   // $(".input-ul").append(`<li class='input-li' id = '${videoId}'><img src='${videoThumbSm}' class='${videoId}' alt='${videoChannelTitle}'><span>${videoChannelTitle}<br>${videoDesc}</span></ul>`);
+   $(".input-window").append(`<button class='input-button border' id = '${videoId}'><span><img src='./assets/images/yt.png' class='ytImg' alt='YouTube video'></span><span><img src='${videoThumbSm}' class='${videoId} vidIcon' alt='${videoChannelTitle}'></span><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
 }
 
 var resultPage = function () {
@@ -135,7 +136,7 @@ var resultPage = function () {
    $(".action-window").append(
       "<div class='input-window border'> <p class='tab-title'>You should checkout ..</p></div>"
    );
-   $(".input-window").append("<ul class='input-ul'></ul>");
+   // $(".input-window").append("<ul class='input-ul'></ul>");
    
    $("#visual").show();
    $("#go-back").on("click", function () {
