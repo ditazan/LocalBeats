@@ -9,6 +9,7 @@
   body {
     font-family: "Montserrat", sans-serif;
     color: white;
+    height: 100vh;
     /* margin: 100px 400px; */
   }
   
@@ -20,6 +21,7 @@
   .container {
     display: flex;
     justify-content: center;
+    width: max-content;
     align-content: center;
     flex-flow: column;
     margin: 8% 30%;
