@@ -26,8 +26,8 @@ body {
   flex-flow: column;
   margin: 8% 30%;
 }
-.localBeat-window {
-}
+/* .localBeat-window {
+} */
 
 .action-window {
   display: flex;
@@ -79,8 +79,8 @@ li {
   margin: 0 10px 10px 10px;
 }
 
-p {
-}
+/* p {
+} */
 
 .tab-title {
   color: white;
@@ -106,4 +106,13 @@ p {
   font-size: 20px;
 }
 
- 
+ .input-li {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  padding: 2px;
+ }
+
+ .input-li img {
+  border-radius: 10%;
+ }
