@@ -10,7 +10,6 @@
     font-family: "Montserrat", sans-serif;
     color: white;
     height: 100vh;
-    /* margin: 100px 400px; */
   }
   
   .border {
@@ -20,12 +19,14 @@
   
   .container {
     display: flex;
+    width: 320px;
     justify-content: center;
-    width: max-content;
     align-content: center;
+    align-items: center;
     flex-flow: column;
-    margin: 8% 30%;
+    margin: 5% auto;
   }
+  
   .localBeat-window {
     background-color: black;
   }
