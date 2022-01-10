@@ -1,106 +1,116 @@
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap");
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Montserrat", sans-serif;
-    background: black;
-    color: white;
-    /* margin: 100px 400px; */
-  }
-  
-  .border {
-    border: 2px solid white;
-    border-radius: 10px;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-flow: column;
-    margin: 8% 30%;
-  }
-  .localBeat-window {
-  }
-  
-  .action-window {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    padding: 20px 30px;
-  }
-  
-  .input-window {
-    margin: 30px 20px;
-  }
-  
-  .visual-window {
-    margin-top: 30px;
-    height: 100px;
-    display:none;
-  }
-  canvas{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: black;
+  color: white;
+  /* margin: 100px 400px; */
+}
+
+.border {
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-flow: column;
+  margin: 8% 30%;
+}
+.localBeat-window {
+}
+
+.action-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 20px 30px;
+}
+
+.input-window {
+  margin: 30px 20px;
+}
+
+.visual-window {
+  margin-top: 30px;
+  height: 100px;
+  display: none;
+}
+canvas {
   display: block;
-  }
-  
-  #go-back{
-    display:contents;
-  }
-  header {
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    border-bottom: 2px solid white;
-    padding: 25px 0 0 0;
-  }
-  h1 {
-    display: inline;
-    padding: 7px 20px 0 10px;
-    border-top: 2px solid white;
-    border-right: 2px solid white;
-    border-top-right-radius: 40px;
-  }
-  
-  .genre-menu {
-    list-style: none;
-  }
-  
-  li {
-    padding: 5px 5px;
-    border: 1px solid white;
-    border-radius: 10px;
-    margin: 0 10px 10px 10px;
-  }
-  
-  p {
-  }
-  
-  .tab-title {
-    color: white;
-    font-size: 20px;
-    border-bottom: 1px solid white;
-    padding: 10px;
-  }
-  
-  .input_text {
-    padding: 5px 10px;
-    background: white;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 10px;
-  }
-  
-  .submit {
-    padding: 15px 30px;
-    background: white;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 20px;
-  }
+}
+
+#go-back {
+  display: contents;
+}
+header {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border-bottom: 2px solid white;
+  padding: 25px 0 0 0;
+}
+h1 {
+  display: inline;
+  padding: 7px 20px 0 10px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-top-right-radius: 40px;
+}
+
+li {
+  padding: 5px 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 0 10px 10px 10px;
+}
+
+p {
+}
+
+.tab-title {
+  color: white;
+  font-size: 20px;
+  border-bottom: 1px solid white;
+  padding: 10px;
+}
+
+.input_text {
+  padding: 5px 10px;
+  background: white;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.submit {
+  padding: 15px 30px;
+  background: white;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.error-modal {
+padding: 20px 10px;
+  position: fixed;
+  border: 1px solid red;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+  z-index: 2;
+  background: black;
+  border-radius: 10px;
+  text-align: center;
+}
