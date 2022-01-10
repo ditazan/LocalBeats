@@ -23,10 +23,11 @@
       <section class="action-window">
         <div class="input-window border">
           <p class="tab-title">Stuff you like:</p>
-          <div class="dropdown"></div>
+          <div class="dropdown">
             <select type="text" placeholder="Enter music genre" class="input_text" id="genreId">
               <option data-genre="genreNone" value="">Select music you love</option>
             </select>
+          </div>
           <ul class="genre-menu">
             <li>
               genre
@@ -39,8 +40,12 @@
 
         <div class="input-window border">
           <p class="tab-title">Where you are:</p>
+
+          <div>
           <input type="text" placeholder="Enter your city's name" class="input_text" id="cityName" autocomplete="off" />
+          </div>
         </div>
+        
         <input type="submit" value="Submit" class="submit input-window" />
       </section>
     </div>
