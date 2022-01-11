@@ -2,10 +2,12 @@ let totalPts = 300;
 let steps = totalPts + 1;
 
 var canvas;
-var w = window.outerWidth;
-var h = window.outerHeight;
+var w = (windowWidth);
+var h = (windowHeight);
+
 function setup() {
-  canvas = createCanvas(w, h);
+  canvas = createCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style('z-index', '-1');
   stroke(255);
