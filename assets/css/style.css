@@ -114,21 +114,35 @@
   }
 
   .input-button {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-between;
-    text-align: justify;
-    padding: 2px;
+    display:flex;
+    align-content:space-between;
+    text-align: left;
+    width: 100%;
+    padding: 3px;
     margin: 3px;
     background: black;
     color: white;
    }
+
+   .input-button img {
+     border-radius: 8px;
+   } 
   
-   .vidIcon {
-    border-radius: 10%;
-    padding: 3px;
+   .vidModal{
+     max-width: 360px;
+     border: 1px solid white;
+     z-index: 100;
+     border: 1px solid white;
+    }
+
+  .vidHeader {
+    background-color: white;
    }
 
+  .vidBody {
+     background-color: black;
+     padding: 3px;
+   }
 
   @include mobile{};
   @include table{};

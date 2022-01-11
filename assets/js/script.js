@@ -44,6 +44,7 @@ $('.submit').on('click', function (event) {
       return
    }
    else
+   resultPage();
       getYouTube(genreName);
    $.ajax({
       type: "GET",
@@ -69,8 +70,6 @@ $('.submit').on('click', function (event) {
 
       }
    })
-
-
 });
 
 function venueParse(venueArray) {
@@ -89,8 +88,8 @@ function venueParse(venueArray) {
 };
 
 const getYouTube = function (genreName) {
-   // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
-   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC3AdJtPVcCpP-p6xCnHUJzJou9C_Lpb9o`)   
+   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+   // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC3AdJtPVcCpP-p6xCnHUJzJou9C_Lpb9o`)
       .then(async function (response) {
          if (response.ok) {
             const dataYouTube = await response.json();
@@ -109,10 +108,7 @@ const getYouTube = function (genreName) {
                const videoThumbSm = dataYouTube.items[yt].snippet.thumbnails.default.url;
                const videoThumbMd = dataYouTube.items[yt].snippet.thumbnails.medium.url;
                const videoThumbLg = dataYouTube.items[yt].snippet.thumbnails.high.url;
-               // console.log(videoEtag, videoId, videoTitle, videoChannelId, videoChannelTitle, videoDesc, videoDateTime);
-               console.log(videoThumbSm, videoThumbMd, videoThumbLg);
-               // crtVideoPlayer(videoId);
-               option1(videoId, videoChannelTitle, videoDesc,videoThumbSm);
+               option1(videoId, videoChannelTitle, videoDesc, videoThumbSm);
 
             };
          } else {
@@ -123,35 +119,38 @@ const getYouTube = function (genreName) {
 
 
 
-function option1(videoId, videoChannelTitle, videoDesc,videoThumbSm) {
-  $(".input-window").append(`<button type='button' class='input-button' id='${videoId}'><img src='${videoThumbSm}' alt='${videoChannelTitle}'><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
+function option1(videoId, videoChannelTitle, videoDesc, videoThumbSm) {
+   $(".input-window").append(`<button type='button' class='input-button' id='${videoId}' onclick=crtVideoPlayer('${videoId}')><img src='${videoThumbSm}' alt='${videoChannelTitle}' /><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
+};
+
+
+function crtVideoPlayer(videoId) {
+   // document.cookie['Same Site'] = Lax;
+   $(".action-window").append('<div class="vidModal" display="none"></div>');
+   $(".vidModal").append('<div class="vidHeader" display="none"><img src="./assets/images/close.png" alt="button to close modal" class="imgClose" display="none" onclick=closeModal() /></div>');
+   $(".vidModal").append('<div class="vidBody" display="none"></div>');
+   const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
+   $(".vidBody").append(videoPlayer);
+  }
+
+
+const closeModal = function() {
+   $(".youtube").remove();
+   $(".vidModal").remove();
+   $(".vidHeader").remove();
+   $(".imgClose").remove();
+   $(".vidBody").remove();
+
 }
-
-
-   $(".input-button").click(function() {
-   const videoRef =  $(this).att("id");
-   console.log("invideoref");
-   console.log(videoRef);
-});
-
-// function crtVideoPlayer(videoPlayer) {
-//    document.cookie['Same Site'] = Lax;
-//    const videoPlayer = $(`<iframe id="player" class="youtube" display = "block" type="text/html" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
-//    $(".input-window").append(videoPlayer);
-// }
 
 var resultPage = function () {
    $(".input-window").remove();
    $(".submit").remove();
-   $(".action-window").append("<div class='input-window border'> <p class='tab-title'>You should checkout ..</p></div>");
-   // $("#visual").show();
-   $("#go-back").on("click", function () {
+   $(".action-window").append("<div class='input-window border'><p class='tab-title'>You should checkout ..</p></div>");
+     $("#go-back").on("click", function () {
       location.reload();
       console.log("slick");
    });
 };
 
-$(".submit").on("click", function () {
-   resultPage();
-});
 
