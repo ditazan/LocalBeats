@@ -44,6 +44,7 @@ $(".submit").on("click", function (event) {
   } else 
     
     getYouTube(genreName);
+    
     $.ajax({
       type: "GET",
       url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(
@@ -83,8 +84,8 @@ $(".submit").on("click", function (event) {
         inputError();
       }
     });
-
-    resultPage();
+resultPage();
+    
   
 });
 
@@ -223,12 +224,12 @@ $("select").on("change", function () {
 });
 
 var makeEvents = function (artist, date, venue, location, availibility) {
-  var eventBox = $("</div class='border '></div>");
+  var eventBox = $("</div class='border'></div>");
   var eventArtist = $("<h2>" + artist + "</h2>");
   var eventDate = $("<h3>" + date + "</h3>");
-  var eventVenue = $("<p>" + venue + "</h3>");
-  var eventLocation = $("<h3>" + location + "</h3>");
-  var eventAvail = $("<h3>" + availibility + "</h3>");
+  var eventVenue = $("<p>" + venue + "</p>");
+  var eventLocation = $("<p>" + location + "</p>");
+  var eventAvail = $("<p>" + availibility + "</p>");
 
   $(".event-display").append(eventBox);
   eventBox.append(eventArtist);
