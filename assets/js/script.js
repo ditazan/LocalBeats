@@ -23,7 +23,7 @@ $.ajax({
 });
 
 function appendGenres(genreIds, genreNames) {
-  const genreOptions = $(`<option value="${genreIds}">${genreNames}</option>`);
+  const genreOptions = $(`<option value="${genreIds},${genreNames}">$</option>`).text(genreNames);
   $("#genreId").append(genreOptions);
 }
 
@@ -31,7 +31,7 @@ $(".submit").on("click", function (event) {
   event.preventDefault();
   const genreData = $("#genreId").val().split(",");
   const genreId = genreData[0].trim();
-  const genreName = genreOptions.text();
+  const genreName = genreData[0].trim();
   const cityName = $("#cityName").val().trim();
   if (cityName == null || cityName == "") {
     inputError();
@@ -53,15 +53,17 @@ $(".submit").on("click", function (event) {
     dataType: "json",
     success: function (eventsData) {
       const events = eventsData._embedded.events;
-      console.log(events);
+      
       for (let i = 0; i < events.length; i++) {
         const eventDate = events[i].dates.start.localDate;
         const eventTime = events[i].dates.start.localTime;
         const eventStatus = events[i].dates.status.code;
         var eventVenue = events[i]._embedded.venues[0].name;
+        var eventLocation = events[i]._embedded.venues[0].address;
         const eventName = events[i].name;
         const venueArray = events[i]._embedded.venues;
-        makeEvents(eventName, eventDate, eventVenue);
+        console.log(venueArray);
+         makeEvents(eventName, eventDate, eventVenue, eventLocation, eventStatus);
         //   console.log(
         //     eventDate,
         //     eventTime,
@@ -100,6 +102,7 @@ function venueParse(venueArray) {
     //    venueLong,
     //    venueTimeZone
     //  );
+    
   }
 }
 
@@ -114,7 +117,7 @@ var getYouTube = function (genreName) {
       console.log(dataYouTube);
       const youtubeCallEtag = dataYouTube.etag;
       const youtubeNextToken = dataYouTube.nextPageToken;
-      console.log(youtubeCallEtag, youtubeNextToken);
+      // console.log(youtubeCallEtag, youtubeNextToken);
       for (let yt = 0; yt < dataYouTube.items.length; yt++) {
         const videoEtag = dataYouTube.items[yt].etag;
         const videoId = dataYouTube.items[yt].id.videoId;
@@ -185,32 +188,42 @@ var saveLocal = function () {
 var loadLocal = function () {
   var existing = JSON.parse(localStorage.getItem("selectedGenres"));
 
-  existing = existing ? existing.split(',') : [];
+  existing = existing ? existing.split(",") : [];
 
-//   $.each(selectedGenreHistory, function () {
-//     makeSelectedGenre(selectedGenreHistory[i]);
-//   });
+  //   $.each(selectedGenreHistory, function () {
+  //     makeSelectedGenre(selectedGenreHistory[i]);
+  //   });
 };
 
 var makeSelectedGenre = function (genre) {
-  var selectedG = $("<button class='selected "+genre+"'>" + genre + "</button>");
+  var selectedG = $(
+    "<button class='selected " + genre + "'>" + genre + "</button>"
+  );
   $(".selected-genres").append(selectedG);
 };
 
 $("select").on("change", function () {
   var selectedGenre = $("select option:selected").text();
-  saveLocal();
-  loadLocal();
+//   saveLocal();
+//   loadLocal();
   selectedGenreHistory.push(selectedGenre);
-  saveLocal();
+//   saveLocal();
   console.log(selectedGenreHistory);
   console.log(selectedGenre);
 });
 
-var makeEvents = function (artist, date, venue) {
-  var eventBox= $("</div>");
-
-  
+var makeEvents = function (artist, date, venue, location, availibility) {
+  var eventBox = $("</div class='border local-window'></div>");
+  var eventArtist = $("<h2>" + artist + "</h2>");
+  var eventDate = $("<h3>" + date + "</h3>");
+  var eventVenue = $("<p>" + venue + "</h3>");
+  var eventLocation = $("<h3>" + location + "</h3>");
+  var eventAvail = $("<h3>" + availibility + "</h3>");
 
   $("event-display").append(eventBox);
-}
+  eventBox.append(eventArtist);
+  eventBox.append(eventDate);
+  eventBox.append(eventVenue);
+  eventBox.append(eventLocation);
+  eventBox.append(eventAvail);
+};
