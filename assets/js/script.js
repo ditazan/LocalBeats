@@ -88,7 +88,7 @@ function venueParse(venueArray) {
 };
 
 const getYouTube = function (genreName) {
-   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs&SameSite=none;secure`)
    // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC3AdJtPVcCpP-p6xCnHUJzJou9C_Lpb9o`)
       .then(async function (response) {
          if (response.ok) {
@@ -125,11 +125,11 @@ function option1(videoId, videoChannelTitle, videoDesc, videoThumbSm) {
 
 
 function crtVideoPlayer(videoId) {
-   // document.cookie['Same Site'] = Lax;
+   document.cookie.samesite = 'none; secure';
    $(".action-window").append('<div class="vidModal" display="none"></div>');
    $(".vidModal").append('<div class="vidHeader" display="none"><img src="./assets/images/close.png" alt="button to close modal" class="imgClose" display="none" onclick=closeModal() /></div>');
    $(".vidModal").append('<div class="vidBody" display="none"></div>');
-   const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
+   const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" samesite="none;secure" width="340" height="207" src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&samesite=none;secure" frameborder="0"></iframe>`);
    $(".vidBody").append(videoPlayer);
   }
 
