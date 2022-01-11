@@ -1,125 +1,135 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap");
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: "Montserrat", sans-serif;
-  background: black;
-  color: white;
-  margin: 100px 400px;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    height: 100vh;
+  }
+  
+  .border {
+    border: 2px solid white;
+    border-radius: 10px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-flow: column;
+    margin: 5% auto;
+  }
 
-.border {
-  border: 2px solid white;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgb(163,177,198,0.6), -5px -5px 10px rgba(255,255,255, 0.5);
-}
+  .localBeat-window {
+    background-color: black;
+  }
+  
+  .action-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 20px 30px;
+  }
+  
+  .input-window {
+    margin: 15px 0 15px 0;
+  }
+  
+  .visual-window {
+    margin-top: 30px;
+    height: 100px;
+    display:none;
+  }
+  canvas{
+  display: block;
+  }
+  
+  #go-back{
+    display:contents;
+  }
+  header {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    padding: 25px 0 0 0;
+  }
+  h1 {
+    display: inline;
+    padding: 7px 20px 0 10px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    border-top-right-radius: 40px;
+  }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-flow: column;
-  margin: 8% 30%;
-}
-/* .localBeat-window {
-} */
+  .dropdown {
+    width: 100%;
+  }
+  
+  .genre-menu {
+    list-style: none;
+  }
+  
+  li {
+    padding: 5px 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0 10px 10px 10px;
+  }
+  
 
-.action-window {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  padding: 20px 30px;
-}
+  .tab-title {
+    color: white;
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    padding: 10px;
+  }
+  
+  .input_text {
+    padding: 5px 10px;
+    background: white;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+    color: black;
+  }
+  
+  .submit {
+    width: 50%;
+    margin: 10px auto;
+    padding: 15px 30px;
+    color: black;
+    background: white;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 20px;
+  }
 
-.input-window {
-  margin: 30px 20px;
-}
+  .input-button {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    text-align: justify;
+    padding: 2px;
+    margin: 3px;
+    background: black;
+    color: white;
+   }
+  
+   .vidIcon {
+    border-radius: 10%;
+    padding: 3px;
+   }
 
-.visual-window {
-  margin-top: 30px;
-  height: 100px;
-  display:none;
-}
-canvas{
-display: block;
-}
-
-#go-back{
-  display:contents;
-}
-header {
-  font-size: 20px;
-  color: white;
-  font-weight: bold;
-  border-bottom: 2px solid white;
-  padding: 25px 0 0 0;
-}
-h1 {
-  display: inline;
-  padding: 7px 20px 0 10px;
-  border-top: 2px solid white;
-  border-right: 2px solid white;
-  border-top-right-radius: 40px;
-}
-
-.genre-menu {
-  list-style: none;
-}
-
-li {
-  padding: 5px 5px;
-  border: 1px solid white;
-  border-radius: 10px;
-  margin: 0 10px 10px 10px;
-}
-
-/* p {
-} */
-
-.tab-title {
-  color: white;
-  font-size: 20px;
-  border-bottom: 1px solid white;
-  padding: 10px;
-}
-
-.input_text {
-  padding: 5px 10px;
-  background: white;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 10px;
-}
-
-.submit {
-  padding: 15px 30px;
-  background: white;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 20px;
-}
-
- .input-button {
-  display: flex;
-  justify-content: space-between;
-  align-content: space-between;
-  text-align: justify;
-  padding: 2px;
-  margin: 3px;
-  background: black;
-  color: white;
- }
-
- .vidIcon {
-  border-radius: 10%;
-  padding: 3px;
- }
-
+  @include mobile{};
+  @include table{};
+  @include desktop{};
