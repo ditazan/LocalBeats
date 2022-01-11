@@ -27,6 +27,7 @@ function appendGenres(genreIds, genreNames) {
   $("#genreId").append(genreOptions);
 }
 
+<<<<<<< HEAD
 $(".submit").on("click", function (event) {
   event.preventDefault();
   const genreData = $("#genreId").val().split(",");
@@ -72,6 +73,46 @@ $(".submit").on("click", function (event) {
         //     eventName
         //   );
         venueParse(venueArray);
+=======
+$('.submit').on('click', function (event) {
+   event.preventDefault();
+   const genreData = $("#genreId").val().split(",");
+   const genreId = genreData[0].trim();
+   const genreName = genreData[1].trim();
+   const cityName = $("#cityName").val().trim();
+   console.log(genreName, genreId);
+   if (cityName == null || cityName == "") {
+      alert("ERROR: A city name is required. Please enter a city name.")
+      return
+   } else if (genreId == null || genreId == "") {
+      alert("ERROR: A music genre is required. Please select a music genre.")
+      return
+   }
+   else
+      getYouTube(genreName);
+   $.ajax({
+      type: "GET",
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(cityName)}`,
+      async: true,
+      dataType: "json",
+      success: function (eventsData) {
+         const events = eventsData._embedded.events;
+         console.log(events);
+         for (let i = 0; i < events.length; i++) {
+            const eventDate = events[i].dates.start.localDate;
+            const eventTime = events[i].dates.start.localTime;
+            const eventTimeZone = events[i].dates.timezone;
+            const eventStatus = events[i].dates.status.code;
+            const eventName = events[i].name;
+            const venueArray = events[i]._embedded.venues;
+            console.log(eventDate, eventTime, eventTimeZone, eventStatus, eventName);
+            venueParse(venueArray);
+         }
+
+      },
+      error: function (xhr, status, err) {
+
+>>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
       }
     },
     error: function (xhr, status, err) {
@@ -106,6 +147,7 @@ function venueParse(venueArray) {
   }
 }
 
+<<<<<<< HEAD
 var getYouTube = function (genreName) {
   fetch(
     `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(
@@ -154,9 +196,62 @@ function crtVideoPlayer(videoId) {
     `<iframe id="player" class="youtube" display = "block" type="text/html" async="" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`
   );
   $(".input-window").append(videoPlayer);
+=======
+const getYouTube = function (genreName) {
+   // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC3AdJtPVcCpP-p6xCnHUJzJou9C_Lpb9o`)   
+      .then(async function (response) {
+         if (response.ok) {
+            const dataYouTube = await response.json();
+            console.log(dataYouTube);
+            const youtubeCallEtag = dataYouTube.etag;
+            const youtubeNextToken = dataYouTube.nextPageToken;
+            console.log(youtubeCallEtag, youtubeNextToken);
+            for (let yt = 0; yt < dataYouTube.items.length; yt++) {
+               const videoEtag = dataYouTube.items[yt].etag;
+               const videoId = dataYouTube.items[yt].id.videoId;
+               const videoTitle = dataYouTube.items[yt].title;
+               const videoChannelId = dataYouTube.items[yt].snippet.channelId;
+               const videoChannelTitle = dataYouTube.items[yt].snippet.channelTitle;
+               const videoDesc = dataYouTube.items[yt].snippet.description;
+               const videoDateTime = dataYouTube.items[yt].snippet.publishTime;
+               const videoThumbSm = dataYouTube.items[yt].snippet.thumbnails.default.url;
+               const videoThumbMd = dataYouTube.items[yt].snippet.thumbnails.medium.url;
+               const videoThumbLg = dataYouTube.items[yt].snippet.thumbnails.high.url;
+               // console.log(videoEtag, videoId, videoTitle, videoChannelId, videoChannelTitle, videoDesc, videoDateTime);
+               console.log(videoThumbSm, videoThumbMd, videoThumbLg);
+               // crtVideoPlayer(videoId);
+               option1(videoId, videoChannelTitle, videoDesc,videoThumbSm);
+
+            };
+         } else {
+            alert(error + " something went wrong");
+         }
+      })
+};
+
+
+
+function option1(videoId, videoChannelTitle, videoDesc,videoThumbSm) {
+  $(".input-window").append(`<button type='button' class='input-button' id='${videoId}'><img src='${videoThumbSm}' alt='${videoChannelTitle}'><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
+>>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
 }
 
+
+   $(".input-button").click(function() {
+   const videoRef =  $(this).att("id");
+   console.log("invideoref");
+   console.log(videoRef);
+});
+
+// function crtVideoPlayer(videoPlayer) {
+//    document.cookie['Same Site'] = Lax;
+//    const videoPlayer = $(`<iframe id="player" class="youtube" display = "block" type="text/html" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
+//    $(".input-window").append(videoPlayer);
+// }
+
 var resultPage = function () {
+<<<<<<< HEAD
   $(".input-window").remove();
   $(".submit").remove();
   $(".action-window").append(
@@ -177,6 +272,16 @@ var inputError = function () {
   errorModal.on("click", function () {
     errorModal.remove();
   });
+=======
+   $(".input-window").remove();
+   $(".submit").remove();
+   $(".action-window").append("<div class='input-window border'> <p class='tab-title'>You should checkout ..</p></div>");
+   // $("#visual").show();
+   $("#go-back").on("click", function () {
+      location.reload();
+      console.log("slick");
+   });
+>>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
 };
 
 let selectedGenreHistory = [];

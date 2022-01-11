@@ -9,7 +9,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
@@ -23,18 +23,35 @@
       <section class="action-window">
         <div class="input-window border">
           <p class="tab-title">Stuff you like:</p>
+          <div class="dropdown">
             <select type="text" placeholder="Enter music genre" class="input_text" id="genreId">
               <option data-genre="genreNone" value="">Select music you love</option>
             </select>
+<<<<<<< HEAD
           <div class="selected-genres">
 
           </div>
+=======
+          </div>
+          <ul class="genre-menu">
+            <li>
+              genre
+            </li>
+            <li>
+              genre
+            </li>
+          </ul>
+>>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
         </div>
 
         <div class="input-window border">
           <p class="tab-title">Where you are:</p>
+
+          <div>
           <input type="text" placeholder="Enter your city's name" class="input_text" id="cityName" autocomplete="off" />
+          </div>
         </div>
+        
         <input type="submit" value="Submit" class="submit input-window" />
       </section>
     </div>
@@ -42,13 +59,11 @@
       <p id="go-back">Refine Search</p>
     </div>
   </div>
-  <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
     integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./assets/js/p5.js"></script>
-  <script src="./assets/js/noise.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 
