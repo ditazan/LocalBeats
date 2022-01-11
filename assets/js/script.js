@@ -24,7 +24,7 @@ $.ajax({
 
 function appendGenres(genreIds, genreNames) {
   const genreOptions = $(
-    `<option value="${genreIds},${genreNames}">$</option>`
+    `<option value="${genreIds},${genreNames}"></option>`
   ).text(genreNames);
   $("#genreId").append(genreOptions);
 }
@@ -41,48 +41,50 @@ $(".submit").on("click", function (event) {
   } else if (genreId == null || genreId == "") {
     inputError();
     return;
-  } else{resultPage();
-  getYouTube(genreName);
-  $.ajax({
-    type: "GET",
-    url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(
-      cityName
-    )}`,
-    async: true,
-    dataType: "json",
-    success: function (eventsData) {
-      const events = eventsData._embedded.events;
+  } else {
+    
+    getYouTube(genreName);
+    $.ajax({
+      type: "GET",
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(
+        cityName
+      )}`,
+      async: true,
+      dataType: "json",
+      success: function (eventsData) {
+        console.log(eventsData);
+        var events = eventsData._embedded.events;
 
-      for (let i = 0; i < events.length; i++) {
-        const eventDate = events[i].dates.start.localDate;
-        const eventTime = events[i].dates.start.localTime;
-        const eventStatus = events[i].dates.status.code;
-        var eventVenue = events[i]._embedded.venues[0].name;
-        var eventLocation = events[i]._embedded.venues[0].address;
-        const eventName = events[i].name;
-        const venueArray = events[i]._embedded.venues;
-        console.log(venueArray);
-        makeEvents(
-          eventName,
-          eventDate,
-          eventVenue,
-          eventLocation,
-          eventStatus
-        );
-        //   console.log(
-        //     eventDate,
-        //     eventTime,
-        //     eventTimeZone,
-        //     eventStatus,
-        //     eventName
-        //   );
-        venueParse(venueArray);
-      }
-    },
-    error: function (xhr, status, err) {
-      inputError();
-    },
-  }); }
+        for (let i = 0; i < events.length; i++) {
+          const eventDate = events[i].dates.start.localDate;
+          const eventTime = events[i].dates.start.localTime;
+          const eventStatus = events[i].dates.status.code;
+          var eventVenue = events[i]._embedded.venues[0].name;
+          var eventLocation = events[i]._embedded.venues[0].address;
+          const eventName = events[i].name;
+          const venueArray = events[i]._embedded.venues;
+          console.log(venueArray);
+          makeEvents(
+            eventName,
+            eventDate,
+            eventVenue,
+            eventLocation,
+            eventStatus
+          );
+            // console.log(
+            //   eventDate,
+            //   eventTime,
+            //   eventStatus,
+            //   eventName
+            // );
+        }
+      },
+      error: function (xhr, status, err) {
+        inputError();
+      },
+    });
+    resultPage();
+  }
 });
 
 function venueParse(venueArray) {
@@ -122,7 +124,7 @@ const getYouTube = function (genreName) {
       console.log(dataYouTube);
       const youtubeCallEtag = dataYouTube.etag;
       const youtubeNextToken = dataYouTube.nextPageToken;
-      console.log(youtubeCallEtag, youtubeNextToken);
+      // console.log(youtubeCallEtag, youtubeNextToken);
       for (let yt = 0; yt < dataYouTube.items.length; yt++) {
         const videoEtag = dataYouTube.items[yt].etag;
         const videoId = dataYouTube.items[yt].id.videoId;
@@ -168,13 +170,11 @@ $(".input-button").click(function () {
 var resultPage = function () {
   $(".input-window").remove();
   $(".submit").remove();
-  $(".action-window").append(
-    "<div class='input-window border event-display'> <p class='tab-title'>You should checkout ..</p> </div>"
-  );
-  //   $("#visual").show();
+  $(".action-window").append("<div class='input-window border event-display'> <p class='tab-title'>You should checkout ...</p></div>");
+  // $("#visual").show();
   $("#go-back").on("click", function () {
-    location.reload();
-    console.log("slick");
+     location.reload();
+     console.log("slick");
   });
 };
 
@@ -235,4 +235,6 @@ var makeEvents = function (artist, date, venue, location, availibility) {
   eventBox.append(eventVenue);
   eventBox.append(eventLocation);
   eventBox.append(eventAvail);
+
+  console.log("appending");
 };
