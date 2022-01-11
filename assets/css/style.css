@@ -20,7 +20,7 @@
   
   .container {
     display: flex;
-    width: 320px;
+    width: auto;
     justify-content: center;
     align-content: center;
     align-items: center;
