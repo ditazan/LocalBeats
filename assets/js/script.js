@@ -31,17 +31,17 @@ function appendGenres(genreIds, genreNames) {
 
 $(".submit").on("click", function (event) {
   event.preventDefault();
-  const genreData = $("#genreId").val().split(",");
-  const genreId = genreData[0].trim();
-  const genreName = genreData[0].trim();
-  const cityName = $("#cityName").val().trim();
+  var genreData = $("#genreId").val().split(",");
+  var genreId = genreData[0].trim();
+  var genreName = genreData[1].trim();
+  var cityName = $("#cityName").val().trim();
   if (cityName == null || cityName == "") {
     inputError();
     return;
   } else if (genreId == null || genreId == "") {
     inputError();
     return;
-  } else {
+  } else 
     
     getYouTube(genreName);
     $.ajax({
@@ -81,10 +81,11 @@ $(".submit").on("click", function (event) {
       },
       error: function (xhr, status, err) {
         inputError();
-      },
+      }
     });
+
     resultPage();
-  }
+  
 });
 
 function venueParse(venueArray) {
