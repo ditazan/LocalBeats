@@ -106,15 +106,9 @@
     font-size: 20px;
   }
 
-  /* Media queries */
-  @media screen and (min-width: 980px) {
 
-  }
-
-  @media screen and (min-width:768px) {
-
-  }
-
-  @media screen and (min-width: 575px) {
-    
+  @media screen and (max-width: 575px) {
+    .container {
+      margin: 3% 10%;
+    }
   }
