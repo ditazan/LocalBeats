@@ -1,4 +1,5 @@
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap");
+
 
   * {
     margin: 0;
@@ -114,6 +115,22 @@
     font-size: 20px;
   }
 
-  @include mobile{}
-  @include table{}
-  @include desktop{}
+  .input-button {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    text-align: justify;
+    padding: 2px;
+    margin: 3px;
+    background: black;
+    color: white;
+   }
+  
+   .vidIcon {
+    border-radius: 10%;
+    padding: 3px;
+   }
+
+  @include mobile{};
+  @include table{};
+  @include desktop{};
