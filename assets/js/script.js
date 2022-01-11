@@ -62,14 +62,14 @@ $(".submit").on("click", function (event) {
         const eventName = events[i].name;
         const venueArray = events[i]._embedded.venues;
         makeEvents(eventName, eventDate, eventVenue);
-      //   console.log(
-      //     eventDate,
-      //     eventTime,
-      //     eventTimeZone,
-      //     eventStatus,
-      //     eventName
-      //   );
-         venueParse(venueArray);
+        //   console.log(
+        //     eventDate,
+        //     eventTime,
+        //     eventTimeZone,
+        //     eventStatus,
+        //     eventName
+        //   );
+        venueParse(venueArray);
       }
     },
     error: function (xhr, status, err) {
@@ -89,17 +89,17 @@ function venueParse(venueArray) {
     var venueLat = venueArray[index].location.latitude;
     var venueLong = venueArray[index].location.longitude;
     var venueTimeZone = venueArray[index].timezone;
-   //  console.log(
-   //    venueId,
-   //    venueName,
-   //    venueAddress,
-   //    venueCity,
-   //    venueState,
-   //    venueZip,
-   //    venueLat,
-   //    venueLong,
-   //    venueTimeZone
-   //  );
+    //  console.log(
+    //    venueId,
+    //    venueName,
+    //    venueAddress,
+    //    venueCity,
+    //    venueState,
+    //    venueZip,
+    //    venueLat,
+    //    venueLong,
+    //    venueTimeZone
+    //  );
   }
 }
 
@@ -159,7 +159,7 @@ var resultPage = function () {
   $(".action-window").append(
     "<div class='input-window border event-display'> <p class='tab-title'>You should checkout ..</p> </div>"
   );
-//   $("#visual").show();
+  //   $("#visual").show();
   $("#go-back").on("click", function () {
     location.reload();
     console.log("slick");
@@ -178,49 +178,39 @@ var inputError = function () {
 
 let selectedGenreHistory = [];
 
-var saveLocal = function(){
-   localStorage.setItem('selectedGenres', selectedGenreHistory);
-}
+var saveLocal = function () {
+  localStorage.setItem("selectedGenres", selectedGenreHistory);
+};
 
-var loadLocal = function(){
-   localStorage.getItem('selectedGenres');
-   if(!selectedGenreHistory){
-      selectedGenreHistory =[""];
-   }
+var loadLocal = function () {
+  var existing = JSON.parse(localStorage.getItem("selectedGenres"));
 
-}
+  existing = existing ? existing.split(',') : [];
 
-var makeSelectedGenre = function (select) {
-  
-  if (!selectedGenreHistory) {
-   selectedGenreHistory.push(select);
-  } else {
-    for (i = 0; selectedGenreHistory.length; i++) {
+//   $.each(selectedGenreHistory, function () {
+//     makeSelectedGenre(selectedGenreHistory[i]);
+//   });
+};
 
-      var selectedG = $(
-        "<button class='selected'>" + selectedGenreHistory[i] + "</button>"
-      );
-      $(".selected-genres").append(selectedG);
-    }
-  }
+var makeSelectedGenre = function (genre) {
+  var selectedG = $("<button class='selected "+genre+"'>" + genre + "</button>");
+  $(".selected-genres").append(selectedG);
 };
 
 $("select").on("change", function () {
-   
   var selectedGenre = $("select option:selected").text();
-  selectedGenreHistory.push(selectedGenre);
+  saveLocal();
   loadLocal();
+  selectedGenreHistory.push(selectedGenre);
   saveLocal();
   console.log(selectedGenreHistory);
   console.log(selectedGenre);
-//  makeSelectedGenre(selectedGenre);
 });
 
-var makeEvents = function(artist, date, venue){
-var eventTableEl = $("</table>");
-   var row = $("<tr><td class='artist'>"+artist+"</td><td class='date'>"+date+"</td><td class='venue'>"+venue+"</td></tr>");
-   
-   $("event-display").eventTableEl;
-   eventTableEl.append(row);
-   
+var makeEvents = function (artist, date, venue) {
+  var eventBox= $("</div>");
+
+  
+
+  $("event-display").append(eventBox);
 }
