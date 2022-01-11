@@ -47,7 +47,7 @@ $('.submit').on('click', function (event) {
       getYouTube(genreName);
    $.ajax({
       type: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=" + genreId + "&city=" + cityName + "&radius=100&unit=miles",
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(cityName)}`,
       async: true,
       dataType: "json",
       success: function (eventsData) {
@@ -89,7 +89,8 @@ function venueParse(venueArray) {
 };
 
 const getYouTube = function (genreName) {
-   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+   // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
+   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC3AdJtPVcCpP-p6xCnHUJzJou9C_Lpb9o`)   
       .then(async function (response) {
          if (response.ok) {
             const dataYouTube = await response.json();
@@ -108,9 +109,10 @@ const getYouTube = function (genreName) {
                const videoThumbSm = dataYouTube.items[yt].snippet.thumbnails.default.url;
                const videoThumbMd = dataYouTube.items[yt].snippet.thumbnails.medium.url;
                const videoThumbLg = dataYouTube.items[yt].snippet.thumbnails.high.url;
-               console.log(videoEtag, videoId, videoTitle, videoChannelId, videoChannelTitle, videoDesc, videoDateTime);
+               // console.log(videoEtag, videoId, videoTitle, videoChannelId, videoChannelTitle, videoDesc, videoDateTime);
                console.log(videoThumbSm, videoThumbMd, videoThumbLg);
-               crtVideoPlayer(videoId);
+               // crtVideoPlayer(videoId);
+               option1(videoId, videoChannelTitle, videoDesc,videoThumbSm);
 
             };
          } else {
@@ -119,18 +121,30 @@ const getYouTube = function (genreName) {
       })
 };
 
-function crtVideoPlayer(videoId) {
-   const videoPlayer = $(`<iframe id="player" class="youtube" display = "block" type="text/html" async="" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
-   $(".input-window").append(videoPlayer);
+
+
+function option1(videoId, videoChannelTitle, videoDesc,videoThumbSm) {
+  $(".input-window").append(`<button type='button' class='input-button' id='${videoId}'><img src='${videoThumbSm}' alt='${videoChannelTitle}'><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
 }
+
+
+   $(".input-button").click(function() {
+   const videoRef =  $(this).att("id");
+   console.log("invideoref");
+   console.log(videoRef);
+});
+
+// function crtVideoPlayer(videoPlayer) {
+//    document.cookie['Same Site'] = Lax;
+//    const videoPlayer = $(`<iframe id="player" class="youtube" display = "block" type="text/html" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`);
+//    $(".input-window").append(videoPlayer);
+// }
 
 var resultPage = function () {
    $(".input-window").remove();
    $(".submit").remove();
-   $(".action-window").append(
-      "<div class='input-window border'> <p class='tab-title'>You should checkout ..</p> poopie</div>"
-   );
-   $("#visual").show();
+   $(".action-window").append("<div class='input-window border'> <p class='tab-title'>You should checkout ..</p></div>");
+   // $("#visual").show();
    $("#go-back").on("click", function () {
       location.reload();
       console.log("slick");
