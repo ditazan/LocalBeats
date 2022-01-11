@@ -85,7 +85,6 @@
     margin: 0 10px 10px 10px;
   }
   
-
   .tab-title {
     color: white;
     font-size: 20px;
@@ -130,6 +129,14 @@
     padding: 3px;
    }
 
+
   @include mobile{};
   @include table{};
   @include desktop{};
+
+
+  @media screen and (max-width: 575px) {
+    .container {
+      margin: 3% 10%;
+    }
+  }
