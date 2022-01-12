@@ -227,9 +227,11 @@ a{
 }
 
 .go-back{
+  width:30px;
   font-size: 12px;
   float: right;
   display: none;
+  padding-right: 10px;
 }
 
 .error-modal{
