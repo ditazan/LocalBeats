@@ -96,29 +96,28 @@ $(".submit").on("click", function (event) {
 });
 
 function venueParse(venueArray) {
-   for (let index = 0; index < venueArray.length; index++) {
-      var venueId = venueArray[index].id;
-      var venueName = venueArray[index].name;
-      var venueAddress = venueArray[index].address.line1;
-      var venueCity = venueArray[index].city.name;
-      var venueState = venueArray[index].state.stateCode;
-      var venueZip = venueArray[index].postalCode;
-      var venueLat = venueArray[index].location.latitude;
-      var venueLong = venueArray[index].location.longitude;
-      var venueTimeZone = venueArray[index].timezone;
-      //  console.log(
-      //    venueId,
-      //    venueName,
-      //    venueAddress,
-      //    venueCity,
-      //    venueState,
-      //    venueZip,
-      //    venueLat,
-      //    venueLong,
-      //    venueTimeZone
-      //  );
-
-   }
+  for (let index = 0; index < venueArray.length; index++) {
+    var venueId = venueArray[index].id;
+    var venueName = venueArray[index].name;
+    var venueAddress = venueArray[index].address.line1;
+    var venueCity = venueArray[index].city.name;
+    var venueState = venueArray[index].state.stateCode;
+    var venueZip = venueArray[index].postalCode;
+    var venueLat = venueArray[index].location.latitude;
+    var venueLong = venueArray[index].location.longitude;
+    var venueTimeZone = venueArray[index].timezone;
+    //  console.log(
+    //    venueId,
+    //    venueName,
+    //    venueAddress,
+    //    venueCity,
+    //    venueState,
+    //    venueZip,
+    //    venueLat,
+    //    venueLong,
+    //    venueTimeZone
+    //  );
+  }
 }
 
 const getYouTube = function (genreName) {
@@ -153,53 +152,52 @@ const getYouTube = function (genreName) {
 };
 
 
-
 function option1(videoId, videoChannelTitle, videoDesc, videoThumbSm) {
-   $(".input-window").append(`<button type='button' class='input-button' id='${videoId}' onclick=crtVideoPlayer('${videoId}')><img src='${videoThumbSm}' alt='${videoChannelTitle}' /><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
+  $(".input-window").append(`<button type='button' class='input-button' id='${videoId}' onclick=crtVideoPlayer('${videoId}')><img src='${videoThumbSm}' alt='${videoChannelTitle}' /><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
 };
 
 
 function crtVideoPlayer(videoId) {
-   document.cookie.samesite = 'none; secure';
-   $(".action-window").append('<div class="vidModal" display="none"></div>');
-   $(".vidModal").append('<div class="vidHeader" display="none"><img src="./assets/images/close.png" alt="button to close modal" class="imgClose" display="none" onclick=closeModal() /></div>');
-   $(".vidModal").append('<div class="vidBody" display="none"></div>');
-   const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" samesite="none;secure" width="340" height="207" src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&samesite=none;secure" frameborder="0"></iframe>`);
-   $(".vidBody").append(videoPlayer);
+  document.cookie.samesite = 'none; secure';
+  $(".action-window").append('<div class="vidModal" display="none"></div>');
+  $(".vidModal").append('<div class="vidHeader" display="none"><img src="./assets/images/close.png" alt="button to close modal" class="imgClose" display="none" onclick=closeModal() /></div>');
+  $(".vidModal").append('<div class="vidBody" display="none"></div>');
+  const videoPlayer = $(`<iframe id="player" class="youtube" type="text/html" samesite="none;secure" width="340" height="207" src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&samesite=none;secure" frameborder="0"></iframe>`);
+  $(".vidBody").append(videoPlayer);
 }
 
 
 const closeModal = function () {
-   $(".youtube").remove();
-   $(".vidModal").remove();
-   $(".vidHeader").remove();
-   $(".imgClose").remove();
-   $(".vidBody").remove();
-
+  $(".youtube").remove();
+  $(".vidModal").remove();
+  $(".vidHeader").remove();
+  $(".imgClose").remove();
+  $(".vidBody").remove();
 }
 
 var resultPage = function () {
-   $(".input-window").remove();
-   $(".submit").remove();
-   $(".action-window").append(
-      "<div class='event-display border '> <p class='tab-title'>You should checkout ...</p></div>"
-   );
-   $(".action-window").append(
-      "<div class='input-window border '> <p class='tab-title'>You should checkout ...</p></div>"
-   );
-   $("#go-back").on("click", function () {
-      location.reload();
-      console.log("slick");
-   });
+  $(".input-window").remove();
+  $(".submit").remove();
+
+  $(".action-window").append(
+    "<div class='event-display border '> <p class='tab-title'>You should checkout ...</p></div>"
+  );
+  $(".action-window").append(
+    "<div class='input-window border '> <p class='tab-title'>You should checkout ...</p></div>"
+  );
+ $(".go-back").show();
+  $(".go-back").on("click", function () {
+    location.reload();
+  });
 };
 
 var inputError = function () {
    var errorModal = $(
-      "<div class='error-modal'>Invalid genre selection or City<p style='color:red; padding-top:10px; font-size:12px'> exit </p></div>"
+      "<div class='error-modal'>Invalid genre selection or City<p style='color:red; padding-top:10px; font-size:14px'> exit </p></div>"
    );
    $("body").append(errorModal);
    errorModal.on("click", function () {
-      errorModal.remove();
+      location.reload();
    });
 };
 
@@ -231,21 +229,21 @@ $("select").on("change", function () {
 });
 
 var makeEvents = function (artist, date, venue, location, availibility) {
-   var eventBox = $("<div class='border event'></div>");
-   var eventHead = $(
-      "<div class='eventHead' ></div>"
-   );
-   var eventArtist = $("<p style='font-style:italic'>" + artist + "</p>");
-   var eventDate = $("<p>" + date + "</p>");
-   var eventVenue = $("<p>" + venue + "</p>");
-   var eventLocation = $("<p>" + location + "</p>");
-   var eventAvail = $("<p>" + availibility + "</p>");
+  var eventBox = $("<div class='border event'></div>");
+  var eventHead = $("<div class='eventHead' ></div>");
+  var eventArtist = $("<p style='font-style:italic'>" + artist + "</p>");
+  var eventDate = $("<p>" + date + "</p>");
+  var eventVenue = $("<p>" + venue + "</p>");
+  var eventLocation = $("<p>" + location + "</p>");
+  var eventAvail = $("<p>" + availibility + "</p>");
 
-   $(".event-display").append(eventBox);
-   eventBox.append(eventHead);
-   eventHead.append(eventArtist);
-   eventHead.append(eventDate);
-   eventBox.append(eventVenue);
-   eventBox.append(eventLocation);
-   eventBox.append(eventAvail);
+  $(".event-display").append(eventBox);
+  eventBox.append(eventHead);
+
+  eventHead.append(eventArtist);
+  eventHead.append(eventDate);
+
+  eventBox.append(eventVenue);
+  eventBox.append(eventLocation);
+  eventBox.append(eventAvail);
 };
