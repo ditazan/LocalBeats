@@ -48,9 +48,9 @@ body {
   height: 100px;
   display: none;
 }
-canvas{
+canvas {
   display: block;
-  }
+}
 
 #go-back {
   display: contents;
@@ -61,7 +61,6 @@ header {
   font-weight: bold;
   border-bottom: 2px solid white;
   padding: 25px 0 0 0;
-  
 }
 
 h1 {
@@ -94,7 +93,6 @@ li {
   padding: 10px;
 }
 
-
 .vidIcon {
   border-radius: 10%;
   padding: 3px;
@@ -104,14 +102,13 @@ li {
   margin-bottom: 10px;
 }
 
-.event{
+.event {
   font-size: 14px;
-padding:10px;
-margin:0 10px 10px  10px;
-background: white;
-color: black;
-font-weight:bold;
-
+  padding: 10px;
+  margin: 0 10px 10px 10px;
+  background: white;
+  color: black;
+  font-weight: bold;
 }
 
 .eventHead {
@@ -123,7 +120,7 @@ font-weight:bold;
   border-bottom: 1px dashed black;
   margin-bottom: 10px;
 }
-  
+
 .eventInfo {
   font-style: italic;
 }
@@ -150,50 +147,52 @@ font-weight:bold;
 }
 
 .input-button {
-  display:flex;
-  align-content:space-between;
+  display: flex;
+  align-content: space-between;
   text-align: left;
   width: 100%;
   padding: 3px;
   margin: 3px;
   background: black;
   color: white;
- }
+}
 
- .input-button img {
-   border-radius: 8px;
- } 
+.input-button img {
+  border-radius: 8px;
+}
 
- .vidModal{
-   max-width: 360px;
-   border: 1px solid white;
-   border-radius: 8px;
-   z-index: 100;
-   position: absolute;
-   transition: all 300ms ease-in-out;
-   left: 50%;
-   top: 50%;
-  }
+.vidModal {
+  max-width: 360px;
+  border: 1px solid white;
+  border-radius: 8px;
+  z-index: 100;
+  position: absolute;
+  transition: all 300ms ease-in-out;
+  left: 50%;
+  top: 50%;
+}
 
 .vidHeader {
   background-color: black;
- }
+}
 
 .vidBody {
-   background-color: black;
-   padding: 3px;
-   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2),
- }
+  background-color: black;
+  padding: 3px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
 
- .imgClose {
-   float: right;
-   padding: 10px 10px 0 0;
- }
+.imgClose {
+  float: right;
+  padding: 10px 10px 0 0;
+}
 
-@include mobile{};
-@include table{};
-@include desktop{};
-
+@include mobile {
+}
+@include table {
+}
+@include desktop {
+}
 
 @media screen and (max-width: 575px) {
   .container {
@@ -201,7 +200,7 @@ font-weight:bold;
   }
 }
 
-a{
+a {
   color: inherit;
-  text-decoration: inherit; 
+  text-decoration: inherit;
 }
