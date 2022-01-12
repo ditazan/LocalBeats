@@ -9,17 +9,17 @@ Local Beats will gather two suggestions from you, the type of music that you lik
 * HTML
 * CSS
 * JavaScript
-* p5js
-* Bulma CSS Framework
-* Noise.js
-* JQuery
+* [p5js](https://p5js.org/)
+* [Bulma CSS Framework](https://bulma.io/)
+* [Noise.js](https://p5js.org/reference/#/p5/noise)
+* [JQuery](https://jquery.com/)
 
 
 ## Creators
-* Brad Kelley
-* Dita Zanelli
-* Buyankhishig Jamsran
-* Jamie Jackson
+* [Brad Kelley](https://github.com/bkfleet1)
+* [Dita Zanelli](https://github.com/ditazan)
+* [Buyankhishig Jamsran](https://github.com/buykajamsran)
+* [Jamie Jackson](https://github.com/JJackson510)
 
 ## Project link
 https://ditazan.github.io/LocalBeats/
