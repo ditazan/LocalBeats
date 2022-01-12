@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&family=Quicksand:wght@300&display=swap");
-<<<<<<< HEAD
 
 * {
   margin: 0;
@@ -9,9 +8,8 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: black;
   color: white;
-  /* margin: 100px 400px; */
+  height: 100vh;
 }
 
 .border {
@@ -23,11 +21,13 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
   flex-flow: column;
-  margin: 8% 30%;
+  margin: 5% auto;
 }
 
 .localBeat-window {
+  background-color: rgba(0, 0, 0);
 }
 
 .action-window {
@@ -39,7 +39,7 @@ body {
 }
 
 .input-window {
-  margin: 30px 20px;
+  margin: 15px 0 15px 0;
 }
 
 .visual-window {
@@ -47,9 +47,9 @@ body {
   height: 100px;
   display: none;
 }
-canvas {
+canvas{
   display: block;
-}
+  }
 
 #go-back {
   display: contents;
@@ -60,13 +60,23 @@ header {
   font-weight: bold;
   border-bottom: 2px solid white;
   padding: 25px 0 0 0;
+  
 }
+
 h1 {
   display: inline;
   padding: 7px 20px 0 10px;
   border-top: 2px solid white;
   border-right: 2px solid white;
   border-top-right-radius: 40px;
+}
+
+.dropdown {
+  width: 100%;
+}
+
+.genre-menu {
+  list-style: none;
 }
 
 li {
@@ -76,14 +86,45 @@ li {
   margin: 0 10px 10px 10px;
 }
 
-p {
-}
-
 .tab-title {
   color: white;
   font-size: 20px;
   border-bottom: 1px solid white;
   padding: 10px;
+}
+
+
+.vidIcon {
+  border-radius: 10%;
+  padding: 3px;
+}
+
+.event-display p {
+  margin-bottom: 10px;
+}
+
+.event{
+  font-size: 14px;
+padding:10px;
+margin:0 10px 10px  10px;
+background: white;
+color: black;
+font-weight:bold;
+
+}
+
+.eventHead {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 1px dashed black;
+  margin-bottom: 10px;
+}
+  
+.eventInfo {
+  font-style: italic;
 }
 
 .input_text {
@@ -93,169 +134,73 @@ p {
   font-weight: bold;
   font-size: 20px;
   margin: 10px;
+  color: black;
 }
 
 .submit {
+  width: 50%;
+  margin: 10px auto;
   padding: 15px 30px;
+  color: black;
   background: white;
   border-radius: 50px;
   font-weight: bold;
   font-size: 20px;
 }
 
-.error-modal {
-padding: 20px 10px;
-  position: fixed;
-  border: 1px solid red;
-  top: 50%;
-  left: 50%;
-  margin-top: -100px;
-  margin-left: -100px;
-  z-index: 2;
+.input-button {
+  display:flex;
+  align-content:space-between;
+  text-align: left;
+  width: 100%;
+  padding: 3px;
+  margin: 3px;
   background: black;
-  border-radius: 10px;
-  text-align: center;
-}
-=======
+  color: white;
+ }
+
+ .input-button img {
+   border-radius: 8px;
+ } 
+
+ .vidModal{
+   max-width: 360px;
+   border: 1px solid white;
+   border-radius: 8px;
+   z-index: 100;
+   position: absolute;
+   transition: all 300ms ease-in-out;
+   left: 50%;
+   top: 50%;
+  }
+
+.vidHeader {
+  background-color: black;
+ }
+
+.vidBody {
+   background-color: black;
+   padding: 3px;
+   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2),
+ }
+
+ .imgClose {
+   float: right;
+   padding: 10px 10px 0 0;
+ }
+
+@include mobile{};
+@include table{};
+@include desktop{};
 
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    height: 100vh;
-  }
-  
-  .border {
-    border: 2px solid white;
-    border-radius: 10px;
-  }
-  
+@media screen and (max-width: 575px) {
   .container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-flow: column;
-    margin: 5% auto;
+    margin: 3% 10%;
   }
+}
 
-  .localBeat-window {
-    background-color: black;
-  }
-  
-  .action-window {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    padding: 20px 30px;
-  }
-  
-  .input-window {
-    margin: 15px 0 15px 0;
-  }
-  
-  .visual-window {
-    margin-top: 30px;
-    height: 100px;
-    display:none;
-  }
-  canvas{
-  display: block;
-  }
-  
-  #go-back{
-    display:contents;
-  }
-  header {
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    border-bottom: 2px solid white;
-    padding: 25px 0 0 0;
-  }
-  h1 {
-    display: inline;
-    padding: 7px 20px 0 10px;
-    border-top: 2px solid white;
-    border-right: 2px solid white;
-    border-top-right-radius: 40px;
-  }
-
-  .dropdown {
-    width: 100%;
-  }
-  
-  .genre-menu {
-    list-style: none;
-  }
-  
-  li {
-    padding: 5px 5px;
-    border: 1px solid white;
-    border-radius: 10px;
-    margin: 0 10px 10px 10px;
-  }
-  
-  .tab-title {
-    color: white;
-    font-size: 20px;
-    border-bottom: 1px solid white;
-    padding: 10px;
-  }
-  
-  .input_text {
-    padding: 5px 10px;
-    background: white;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 10px;
-    color: black;
-  }
-  
-  .submit {
-    width: 50%;
-    margin: 10px auto;
-    padding: 15px 30px;
-    color: black;
-    background: white;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  .input-button {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-between;
-    text-align: justify;
-    padding: 2px;
-    margin: 3px;
-    background: black;
-    color: white;
-   }
-  
-   .vidIcon {
-    border-radius: 10%;
-    padding: 3px;
-   }
-
-
-  @include mobile{};
-  @include table{};
-  @include desktop{};
-
-
-  @media screen and (max-width: 575px) {
-    .container {
-      margin: 3% 10%;
-    }
-  }
->>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
+a{
+  color: inherit;
+  text-decoration: inherit; 
+}

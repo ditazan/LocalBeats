@@ -1,4 +1,3 @@
-//Ticketmaster API call to pull genres
 $.ajax({
   type: "GET",
   url: "https://app.ticketmaster.com/discovery/v2/classifications/segments/KZFzniwnSyZfZ7v7nJ?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA",
@@ -23,102 +22,90 @@ $.ajax({
 });
 
 function appendGenres(genreIds, genreNames) {
-  const genreOptions = $(`<option value="${genreIds},${genreNames}">$</option>`).text(genreNames);
+  const genreOptions = $(
+    `<option value="${genreIds},${genreNames}"></option>`
+  ).text(genreNames);
   $("#genreId").append(genreOptions);
 }
 
-<<<<<<< HEAD
 $(".submit").on("click", function (event) {
   event.preventDefault();
-  const genreData = $("#genreId").val().split(",");
-  const genreId = genreData[0].trim();
-  const genreName = genreData[0].trim();
-  const cityName = $("#cityName").val().trim();
+  var genreData = $("#genreId").val().split(",");
+  var genreId = genreData[0].trim();
+  var genreName = genreData[1].trim();
+  var cityName = $("#cityName").val().trim();
   if (cityName == null || cityName == "") {
     inputError();
     return;
   } else if (genreId == null || genreId == "") {
     inputError();
     return;
-  } else resultPage();
-  getYouTube(genreName);
+  } else getYouTube(genreName);
+
   $.ajax({
     type: "GET",
-    url:
-      "https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=5&genreId=" +
-      genreId +
-      "&city=" +
-      cityName +
-      "&radius=100&unit=miles",
+    url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(
+      cityName
+    )}`,
     async: true,
     dataType: "json",
     success: function (eventsData) {
-      const events = eventsData._embedded.events;
       
-      for (let i = 0; i < events.length; i++) {
-        const eventDate = events[i].dates.start.localDate;
-        const eventTime = events[i].dates.start.localTime;
-        const eventStatus = events[i].dates.status.code;
-        var eventVenue = events[i]._embedded.venues[0].name;
-        var eventLocation = events[i]._embedded.venues[0].address;
-        const eventName = events[i].name;
-        const venueArray = events[i]._embedded.venues;
-        console.log(venueArray);
-         makeEvents(eventName, eventDate, eventVenue, eventLocation, eventStatus);
-        //   console.log(
-        //     eventDate,
-        //     eventTime,
-        //     eventTimeZone,
-        //     eventStatus,
-        //     eventName
-        //   );
-        venueParse(venueArray);
-=======
-$('.submit').on('click', function (event) {
-   event.preventDefault();
-   const genreData = $("#genreId").val().split(",");
-   const genreId = genreData[0].trim();
-   const genreName = genreData[1].trim();
-   const cityName = $("#cityName").val().trim();
-   console.log(genreName, genreId);
-   if (cityName == null || cityName == "") {
-      alert("ERROR: A city name is required. Please enter a city name.")
-      return
-   } else if (genreId == null || genreId == "") {
-      alert("ERROR: A music genre is required. Please select a music genre.")
-      return
-   }
-   else
-      getYouTube(genreName);
-   $.ajax({
-      type: "GET",
-      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(cityName)}`,
-      async: true,
-      dataType: "json",
-      success: function (eventsData) {
-         const events = eventsData._embedded.events;
-         console.log(events);
-         for (let i = 0; i < events.length; i++) {
-            const eventDate = events[i].dates.start.localDate;
-            const eventTime = events[i].dates.start.localTime;
-            const eventTimeZone = events[i].dates.timezone;
-            const eventStatus = events[i].dates.status.code;
-            const eventName = events[i].name;
-            const venueArray = events[i]._embedded.venues;
-            console.log(eventDate, eventTime, eventTimeZone, eventStatus, eventName);
-            venueParse(venueArray);
-         }
-
-      },
-      error: function (xhr, status, err) {
-
->>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
+      var events = eventsData._embedded.events;
+      console.log(events);
+      if (events.length > 5) {
+        for (let i = 0; i < 5; i++) {
+          const eventDate = events[i].dates.start.localDate;
+          const eventTime = events[i].dates.start.localTime;
+          const eventStatus = events[i].dates.status.code;
+          var eventVenue = events[i]._embedded.venues[0].name;
+          var eventLocation = events[i]._embedded.venues[0].address.line1;
+          const eventName = events[i].name;
+          const venueArray = events[i]._embedded.venues;
+          console.log(venueArray);
+          makeEvents(
+            eventName,
+            eventDate,
+            eventVenue,
+            eventLocation,
+            eventStatus
+          );
+        }
+      }else if(events=== undefined){
+$(".event-display p").text("Sorry No Events Available");
+      }
+      else {
+        for (let i = 0; i < events.length; i++) {
+          const eventDate = events[i].dates.start.localDate;
+          const eventTime = events[i].dates.start.localTime;
+          const eventStatus = events[i].dates.status.code;
+          var eventVenue = events[i]._embedded.venues[0].name;
+          var eventLocation = String(events[i]._embedded.venues[0].address.line1 );
+          const eventName = events[i].name;
+          console.log(eventName);
+          const venueArray = events[i]._embedded.venues;
+          console.log(venueArray);
+          makeEvents(
+            eventName,
+            eventDate,
+            eventVenue,
+            eventLocation,
+            eventStatus
+          );
+        }
+        // console.log(
+        //   eventDate,
+        //   eventTime,
+        //   eventStatus,
+        //   eventName
+        // );
       }
     },
     error: function (xhr, status, err) {
       inputError();
     },
   });
+  resultPage();
 });
 
 function venueParse(venueArray) {
@@ -147,59 +134,9 @@ function venueParse(venueArray) {
   }
 }
 
-<<<<<<< HEAD
-var getYouTube = function (genreName) {
-  fetch(
-    `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(
-      genreName
-    )}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`
-  ).then(async function (response) {
-    if (response.ok) {
-      const dataYouTube = await response.json();
-      console.log(dataYouTube);
-      const youtubeCallEtag = dataYouTube.etag;
-      const youtubeNextToken = dataYouTube.nextPageToken;
-      // console.log(youtubeCallEtag, youtubeNextToken);
-      for (let yt = 0; yt < dataYouTube.items.length; yt++) {
-        const videoEtag = dataYouTube.items[yt].etag;
-        const videoId = dataYouTube.items[yt].id.videoId;
-        const videoTitle = dataYouTube.items[yt].title;
-        const videoChannelId = dataYouTube.items[yt].snippet.channelId;
-        const videoChannelTitle = dataYouTube.items[yt].snippet.channelTitle;
-        const videoDesc = dataYouTube.items[yt].snippet.description;
-        const videoDateTime = dataYouTube.items[yt].snippet.publishTime;
-        const videoThumbSm =
-          dataYouTube.items[yt].snippet.thumbnails.default.url;
-        const videoThumbMd =
-          dataYouTube.items[yt].snippet.thumbnails.medium.url;
-        const videoThumbLg = dataYouTube.items[yt].snippet.thumbnails.high.url;
-        console.log(
-          videoEtag,
-          videoId,
-          videoTitle,
-          videoChannelId,
-          videoChannelTitle,
-          videoDesc,
-          videoDateTime
-        );
-        console.log(videoThumbSm, videoThumbMd, videoThumbLg);
-        crtVideoPlayer(videoId);
-      }
-    } else {
-      alert(error + " something went wrong");
-    }
-  });
-};
-
-function crtVideoPlayer(videoId) {
-  const videoPlayer = $(
-    `<iframe id="player" class="youtube" display = "block" type="text/html" async="" width="340" height="207" src="http://www.youtube.com/embed/${videoId}?enablejsapi=1" frameborder="0"></iframe>`
-  );
-  $(".input-window").append(videoPlayer);
-=======
 const getYouTube = function (genreName) {
    // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)
-   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC3AdJtPVcCpP-p6xCnHUJzJou9C_Lpb9o`)   
+   fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(genreName)}%20music&type=video&key=AIzaSyC4AYVtJ1KEsd6TtAnFspQ3jpN7ORCFQZs`)   
       .then(async function (response) {
          if (response.ok) {
             const dataYouTube = await response.json();
@@ -234,7 +171,6 @@ const getYouTube = function (genreName) {
 
 function option1(videoId, videoChannelTitle, videoDesc,videoThumbSm) {
   $(".input-window").append(`<button type='button' class='input-button' id='${videoId}'><img src='${videoThumbSm}' alt='${videoChannelTitle}'><span>${videoChannelTitle}<br>${videoDesc}</span></button>`);
->>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
 }
 
 
@@ -251,13 +187,16 @@ function option1(videoId, videoChannelTitle, videoDesc,videoThumbSm) {
 // }
 
 var resultPage = function () {
-<<<<<<< HEAD
   $(".input-window").remove();
   $(".submit").remove();
+
   $(".action-window").append(
-    "<div class='input-window border event-display'> <p class='tab-title'>You should checkout ..</p> </div>"
+    "<div class='event-display border '> <p class='tab-title'>You should checkout ...</p></div>"
   );
-  //   $("#visual").show();
+  $(".action-window").append(
+    "<div class='input-window border '> <p class='tab-title'>You should checkout ...</p></div>"
+  );
+  // $("#visual").show();
   $("#go-back").on("click", function () {
     location.reload();
     console.log("slick");
@@ -272,16 +211,6 @@ var inputError = function () {
   errorModal.on("click", function () {
     errorModal.remove();
   });
-=======
-   $(".input-window").remove();
-   $(".submit").remove();
-   $(".action-window").append("<div class='input-window border'> <p class='tab-title'>You should checkout ..</p></div>");
-   // $("#visual").show();
-   $("#go-back").on("click", function () {
-      location.reload();
-      console.log("slick");
-   });
->>>>>>> 5f4768f6f9feffbddcd1de7bc2e887a5fb051faa
 };
 
 let selectedGenreHistory = [];
@@ -309,25 +238,31 @@ var makeSelectedGenre = function (genre) {
 
 $("select").on("change", function () {
   var selectedGenre = $("select option:selected").text();
-//   saveLocal();
-//   loadLocal();
+  //   saveLocal();
+  //   loadLocal();
   selectedGenreHistory.push(selectedGenre);
-//   saveLocal();
+  //   saveLocal();
   console.log(selectedGenreHistory);
   console.log(selectedGenre);
 });
 
 var makeEvents = function (artist, date, venue, location, availibility) {
-  var eventBox = $("</div class='border local-window'></div>");
-  var eventArtist = $("<h2>" + artist + "</h2>");
-  var eventDate = $("<h3>" + date + "</h3>");
-  var eventVenue = $("<p>" + venue + "</h3>");
-  var eventLocation = $("<h3>" + location + "</h3>");
-  var eventAvail = $("<h3>" + availibility + "</h3>");
+  var eventBox = $("<div class='border event'></div>");
+  var eventHead = $(
+    "<div class='eventHead' ></div>"
+  );
+  var eventArtist = $("<p style='font-style:italic'>" + artist + "</p>");
+  var eventDate = $("<p>" + date + "</p>");
+  var eventVenue = $("<p>" + venue + "</p>");
+  var eventLocation = $("<p>" + location + "</p>");
+  var eventAvail = $("<p>" + availibility + "</p>");
 
-  $("event-display").append(eventBox);
-  eventBox.append(eventArtist);
-  eventBox.append(eventDate);
+  $(".event-display").append(eventBox);
+  eventBox.append(eventHead);
+
+  eventHead.append(eventArtist);
+  eventHead.append(eventDate);
+
   eventBox.append(eventVenue);
   eventBox.append(eventLocation);
   eventBox.append(eventAvail);
