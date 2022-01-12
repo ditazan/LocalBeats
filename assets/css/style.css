@@ -6,11 +6,32 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  color: white;
-  height: 100vh;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    height: 100vh;
+  }
+  
+  .border {
+    border: 2px solid white;
+    border-radius: 10px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-flow: column;
+    margin: 5% auto;
+    width: 360px;
+  }
 
 .border {
   border: 2px solid white;
@@ -47,9 +68,9 @@ body {
   height: 100px;
   display: none;
 }
-/* canvas{
+canvas{
   display: block;
-  } */
+  }
 
 #go-back {
   display: contents;
@@ -63,7 +84,6 @@ header {
   
 }
 
-<<<<<<< HEAD
 h1 {
   display: inline;
   padding: 7px 20px 0 10px;
@@ -79,48 +99,6 @@ h1 {
 .genre-menu {
   list-style: none;
 }
-=======
-  .input-button {
-    display:flex;
-    align-content:space-between;
-    text-align: left;
-    width: 100%;
-    padding: 3px;
-    margin: 3px;
-    background: black;
-    color: white;
-   }
-
-   .input-button img {
-     border-radius: 8px;
-   } 
-  
-   .vidModal{
-     max-width: 360px;
-     border: 1px solid white;
-     border-radius: 8px;
-     z-index: 100;
-     position: absolute;
-     transition: all 300ms ease-in-out;
-     left: 50%;
-     top: 50%;
-    }
-
-  .vidHeader {
-    background-color: black;
-   }
-
-  .vidBody {
-     background-color: black;
-     padding: 3px;
-     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2),
-   }
-
-   .imgClose {
-     float: right;
-     padding: 10px 10px 0 0;
-   }
->>>>>>> 960b72bc3a6db4612dee7d01d571804ec99a65e0
 
 li {
   padding: 5px 5px;
@@ -136,37 +114,6 @@ li {
   padding: 10px;
 }
 
-.input_text {
-  padding: 5px 10px;
-  background: white;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 10px;
-  color: black;
-}
-
-.submit {
-  width: 50%;
-  margin: 10px auto;
-  padding: 15px 30px;
-  color: black;
-  background: white;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.input-button {
-  display: flex;
-  justify-content: space-between;
-  align-content: space-between;
-  text-align: justify;
-  padding: 2px;
-  margin: 3px;
-  background: black;
-  color: white;
-}
 
 .vidIcon {
   border-radius: 10%;
@@ -201,12 +148,72 @@ font-weight:bold;
   font-style: italic;
 }
 
-@include mobile {
+.input_text {
+  padding: 5px 10px;
+  background: white;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+  color: black;
 }
-@include table {
+
+.submit {
+  width: 50%;
+  margin: 10px auto;
+  padding: 15px 30px;
+  color: black;
+  background: white;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 20px;
 }
-@include desktop {
-}
+
+.input-button {
+  display:flex;
+  align-content:space-between;
+  text-align: left;
+  width: 100%;
+  padding: 3px;
+  margin: 3px;
+  background: black;
+  color: white;
+ }
+
+ .input-button img {
+   border-radius: 8px;
+ } 
+
+ .vidModal{
+   max-width: 360px;
+   border: 1px solid white;
+   border-radius: 8px;
+   z-index: 100;
+   position: absolute;
+   transition: all 300ms ease-in-out;
+   left: 50%;
+   top: 50%;
+  }
+
+.vidHeader {
+  background-color: black;
+ }
+
+.vidBody {
+   background-color: black;
+   padding: 3px;
+   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2),
+ }
+
+ .imgClose {
+   float: right;
+   padding: 10px 10px 0 0;
+ }
+
+@include mobile{};
+@include table{};
+@include desktop{};
+
 
 @media screen and (max-width: 575px) {
   .container {
@@ -215,7 +222,12 @@ font-weight:bold;
 }
 
 a{
-  font-size: 10px;
   color: inherit;
   text-decoration: inherit; 
+}
+
+.go-back{
+  font-size: 12px;
+  float: right;
+  display: none;
 }
