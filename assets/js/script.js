@@ -193,11 +193,11 @@ var resultPage = function () {
 
 var inputError = function () {
    var errorModal = $(
-      "<div class='error-modal'>Invalid genre selection or City<p style='color:red; padding-top:10px; font-size:12px'> exit </p></div>"
+      "<div class='error-modal'>Invalid genre selection or City<p style='color:red; padding-top:10px; font-size:14px'> exit </p></div>"
    );
    $("body").append(errorModal);
    errorModal.on("click", function () {
-      errorModal.remove();
+      location.reload();
    });
 };
 

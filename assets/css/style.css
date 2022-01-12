@@ -231,3 +231,18 @@ a{
   float: right;
   display: none;
 }
+
+.error-modal{
+  background: black;
+  font-weight: bolder;
+  border: 1px solid red;
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display:block;
+  padding: 10px;
+
+}
