@@ -32,7 +32,7 @@ $(".submit").on("click", function (event) {
   event.preventDefault();
   var genreData = $("#genreId").val().split(",");
   var genreId = genreData[0].trim();
-  var genreName = genreData[1].trim();
+  var genreName = genreData[1];
   var cityName = $("#cityName").val().trim();
   if (cityName == null || cityName == "") {
     inputError();
