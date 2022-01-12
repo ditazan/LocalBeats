@@ -60,6 +60,7 @@ header {
   font-weight: bold;
   border-bottom: 2px solid white;
   padding: 25px 0 0 0;
+  
 }
 
 h1 {
@@ -129,10 +130,20 @@ li {
   padding: 3px;
 }
 
+.event-display p {
+  margin-bottom: 10px;
+}
+
+.event{
+padding:10px;
+margin:0 10px 10px  10px;
+}
+
 .eventHead {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
   border-bottom: 1px solid white;
 }
   

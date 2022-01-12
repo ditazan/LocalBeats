@@ -72,7 +72,10 @@ $(".submit").on("click", function (event) {
             eventStatus
           );
         }
-      } else {
+      }else if(!events){
+$(".event-display p").text("Sorry No Events Available");
+      }
+      else {
         for (let i = 0; i < events.length; i++) {
           const eventDate = events[i].dates.start.localDate;
           const eventTime = events[i].dates.start.localTime;
@@ -247,7 +250,7 @@ $("select").on("change", function () {
 });
 
 var makeEvents = function (artist, date, venue, location, availibility) {
-  var eventBox = $("<div class='border'></div>");
+  var eventBox = $("<div class='border event'></div>");
   var eventHead = $(
     "<div class='eventHead' ></div>"
   );
@@ -266,6 +269,4 @@ var makeEvents = function (artist, date, venue, location, availibility) {
   eventBox.append(eventVenue);
   eventBox.append(eventLocation);
   eventBox.append(eventAvail);
-
-  console.log("appending");
 };
