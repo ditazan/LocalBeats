@@ -41,27 +41,26 @@ $(".submit").on("click", function (event) {
   } else if (genreId == null || genreId == "") {
     inputError();
     return;
-  } else 
-    
-    getYouTube(genreName);
-    
-    $.ajax({
-      type: "GET",
-      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(
-        cityName
-      )}`,
-      async: true,
-      dataType: "json",
-      success: function (eventsData) {
-        console.log(eventsData);
-        var events = eventsData._embedded.events;
+  } else getYouTube(genreName);
 
-        for (let i = 0; i < events.length; i++) {
+  $.ajax({
+    type: "GET",
+    url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=mN8PQ731bAnsxgiKstMF7PWhVZtHxsEA&size=20&genreId=${genreId}&city=${encodeURIComponent(
+      cityName
+    )}`,
+    async: true,
+    dataType: "json",
+    success: function (eventsData) {
+      
+      var events = eventsData._embedded.events;
+      console.log(events);
+      if (events.length > 5) {
+        for (let i = 0; i < 5; i++) {
           const eventDate = events[i].dates.start.localDate;
           const eventTime = events[i].dates.start.localTime;
           const eventStatus = events[i].dates.status.code;
           var eventVenue = events[i]._embedded.venues[0].name;
-          var eventLocation = events[i]._embedded.venues[0].address;
+          var eventLocation = events[i]._embedded.venues[0].address.line1;
           const eventName = events[i].name;
           const venueArray = events[i]._embedded.venues;
           console.log(venueArray);
@@ -72,21 +71,39 @@ $(".submit").on("click", function (event) {
             eventLocation,
             eventStatus
           );
-            // console.log(
-            //   eventDate,
-            //   eventTime,
-            //   eventStatus,
-            //   eventName
-            // );
         }
-      },
-      error: function (xhr, status, err) {
-        inputError();
+      } else {
+        for (let i = 0; i < events.length; i++) {
+          const eventDate = events[i].dates.start.localDate;
+          const eventTime = events[i].dates.start.localTime;
+          const eventStatus = events[i].dates.status.code;
+          var eventVenue = events[i]._embedded.venues[0].name;
+          var eventLocation = String(events[i]._embedded.venues[0].address.line1 + events[i]._embedded.venues[0].address.line1);
+          const eventName = events[i].name;
+          console.log(eventName);
+          const venueArray = events[i]._embedded.venues;
+          console.log(venueArray);
+          makeEvents(
+            eventName,
+            eventDate,
+            eventVenue,
+            eventLocation,
+            eventStatus
+          );
+        }
+        // console.log(
+        //   eventDate,
+        //   eventTime,
+        //   eventStatus,
+        //   eventName
+        // );
       }
-    });
-resultPage();
-    
-  
+    },
+    error: function (xhr, status, err) {
+      inputError();
+    },
+  });
+  resultPage();
 });
 
 function venueParse(venueArray) {
@@ -172,11 +189,17 @@ $(".input-button").click(function () {
 var resultPage = function () {
   $(".input-window").remove();
   $(".submit").remove();
-  $(".action-window").append("<div class='input-window border event-display'> <p class='tab-title'>You should checkout ...</p></div>");
+
+  $(".action-window").append(
+    "<div class='event-display border '> <p class='tab-title'>You should checkout ...</p></div>"
+  );
+  $(".action-window").append(
+    "<div class='input-window border '> <p class='tab-title'>You should checkout ...</p></div>"
+  );
   // $("#visual").show();
   $("#go-back").on("click", function () {
-     location.reload();
-     console.log("slick");
+    location.reload();
+    console.log("slick");
   });
 };
 
@@ -224,16 +247,22 @@ $("select").on("change", function () {
 });
 
 var makeEvents = function (artist, date, venue, location, availibility) {
-  var eventBox = $("</div class='border'></div>");
-  var eventArtist = $("<h2>" + artist + "</h2>");
-  var eventDate = $("<h3>" + date + "</h3>");
+  var eventBox = $("<div class='border'></div>");
+  var eventHead = $(
+    "<div class='eventHead' ></div>"
+  );
+  var eventArtist = $("<p>" + artist + "</p>");
+  var eventDate = $("<p>" + date + "</p>");
   var eventVenue = $("<p>" + venue + "</p>");
   var eventLocation = $("<p>" + location + "</p>");
   var eventAvail = $("<p>" + availibility + "</p>");
 
   $(".event-display").append(eventBox);
-  eventBox.append(eventArtist);
-  eventBox.append(eventDate);
+  eventBox.append(eventHead);
+
+  eventHead.append(eventArtist);
+  eventHead.append(eventDate);
+
   eventBox.append(eventVenue);
   eventBox.append(eventLocation);
   eventBox.append(eventAvail);
