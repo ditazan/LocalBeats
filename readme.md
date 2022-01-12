@@ -1,5 +1,7 @@
 # Local Beats
 
+<img src="./assets/images/localbeats.png">
+
 ## Purpose
 Local Beats is a music-lover's application that combines your musical interest and location to provide music videos from great artists and live events happening in your area. 
 
