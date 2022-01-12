@@ -16,15 +16,15 @@ Local Beats will gather two suggestions from you, the type of music that you lik
 
 
 ## Creators
-Brad Kelley
-Dita Zanelli
-Buyankhishig Jamsran
-Jamie Jackson
+* Brad Kelley
+* Dita Zanelli
+* Buyankhishig Jamsran
+* Jamie Jackson
 
 ## Project link
 https://ditazan.github.io/LocalBeats/
 
 ## Acknowledgements
-*[Ticketmaster Event Search](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-events-v2)
-*[Ticketmaster Classification Search](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-classifications-v2)
-[YouTube API](https://developers.google.com/youtube/v3/docs/search/list)
+* [Ticketmaster Event Search](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-events-v2)
+* [Ticketmaster Classification Search](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-classifications-v2)
+* [YouTube API](https://developers.google.com/youtube/v3/docs/search/list)
