@@ -51,9 +51,9 @@ $(".submit").on("click", function (event) {
     async: true,
     dataType: "json",
     success: function (eventsData) {
-      
       var events = eventsData._embedded.events;
       console.log(events);
+
       if (events.length > 5) {
         for (let i = 0; i < 5; i++) {
           const eventDate = events[i].dates.start.localDate;
@@ -72,16 +72,18 @@ $(".submit").on("click", function (event) {
             eventStatus
           );
         }
-      }else if(!events){
-$(".event-display p").text("Sorry No Events Available");
-      }
-      else {
+      } else if (events === undefined) {
+        $(".event-display p").text("Sorry No Events Available");
+      } else {
         for (let i = 0; i < events.length; i++) {
           const eventDate = events[i].dates.start.localDate;
           const eventTime = events[i].dates.start.localTime;
           const eventStatus = events[i].dates.status.code;
           var eventVenue = events[i]._embedded.venues[0].name;
-          var eventLocation = String(events[i]._embedded.venues[0].address.line1 + events[i]._embedded.venues[0].address.line1);
+          var eventLocation = String(
+            events[i]._embedded.venues[0].address.line1 +
+              events[i]._embedded.venues[0].address.line2
+          );
           const eventName = events[i].name;
           console.log(eventName);
           const venueArray = events[i]._embedded.venues;
@@ -107,6 +109,8 @@ $(".event-display p").text("Sorry No Events Available");
     },
   });
   resultPage();
+  var back = $("<a href='index.html' style='float:right'>refine search</a>");
+  $("header").append(back);
 });
 
 function venueParse(venueArray) {
@@ -251,10 +255,8 @@ $("select").on("change", function () {
 
 var makeEvents = function (artist, date, venue, location, availibility) {
   var eventBox = $("<div class='border event'></div>");
-  var eventHead = $(
-    "<div class='eventHead' ></div>"
-  );
-  var eventArtist = $("<p>" + artist + "</p>");
+  var eventHead = $("<div class='eventHead' ></div>");
+  var eventArtist = $("<p style='font-style:italic'>" + artist + "</p>");
   var eventDate = $("<p>" + date + "</p>");
   var eventVenue = $("<p>" + venue + "</p>");
   var eventLocation = $("<p>" + location + "</p>");
@@ -269,4 +271,6 @@ var makeEvents = function (artist, date, venue, location, availibility) {
   eventBox.append(eventVenue);
   eventBox.append(eventLocation);
   eventBox.append(eventAvail);
+  
+
 };
