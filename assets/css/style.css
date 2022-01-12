@@ -114,21 +114,45 @@
   }
 
   .input-button {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-between;
-    text-align: justify;
-    padding: 2px;
+    display:flex;
+    align-content:space-between;
+    text-align: left;
+    width: 100%;
+    padding: 3px;
     margin: 3px;
     background: black;
     color: white;
    }
+
+   .input-button img {
+     border-radius: 8px;
+   } 
   
-   .vidIcon {
-    border-radius: 10%;
-    padding: 3px;
+   .vidModal{
+     max-width: 360px;
+     border: 1px solid white;
+     border-radius: 8px;
+     z-index: 100;
+     position: absolute;
+     transition: all 300ms ease-in-out;
+     left: 50%;
+     top: 50%;
+    }
+
+  .vidHeader {
+    background-color: black;
    }
 
+  .vidBody {
+     background-color: black;
+     padding: 3px;
+     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2),
+   }
+
+   .imgClose {
+     float: right;
+     padding: 10px 10px 0 0;
+   }
 
   @include mobile{};
   @include table{};
